@@ -15,23 +15,6 @@
       td:not(:first-child) {
         text-align: center;
       }
-
-      .hide {
-        /*
-        copy pasted from w3 🤷‍♂️
-        https://www.w3.org/WAI/tutorials/forms/labels/
-        basically turns it into a 1px by 1px box
-        */
-        border: 0;
-        clip: rect(0 0 0 0);
-        height: 1px;
-        margin: -1px;
-        overflow: hidden;
-        padding: 0;
-        position: absolute;
-        width: 1px;
-        visibility: hidden;
-      }
     </style>
   </head>
   <body>
@@ -89,13 +72,11 @@
     </table>
     <p>Like what you see? Become a part of the JOTMC family today!</p>
     <form action="">
-      <label for="username" class="hide">Your Name</label>
       <input
         type="text"
         id="username"
         placeholder="Your Name"
         name="username" />
-      <label for="plan" class="hide">Your Plan</label>
       <select name="plan" id="plan">
         <option value="" disabled selected>Select Your Plan:</option>
         <option value="Basic Plan">Basic Plan</option>
