@@ -1,0 +1,101 @@
+@font-face {
+  font-family: "Atlas Grotesk";
+  src: url("AtlasGrotesk-Light-web.woff2"), url("AtlasGrotesk-Medium-Web.woff2");
+}
+
+@font-face {
+  font-family: "Brandon Grotesque";
+  src:
+    url("BrandonGrotesque-Regular.woff2"),
+    url("BrandonGrotesque-Medium.woff2");
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: sans-serif;
+}
+
+.container {
+  padding: 25px 0;
+}
+
+.row {
+  max-width: 500px;
+  width: 100%;
+  margin: 0 auto;
+}
+
+h3,
+label {
+  text-transform: uppercase;
+  font-family: "Brandon Grotesque", sans-serif;
+}
+
+h3 {
+  color: #ec5d57;
+  text-align: center;
+  font-size: 1.5rem;
+  letter-spacing: 0.1em;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+}
+
+form > label {
+  margin-top: 20px;
+  font-weight: bold;
+  padding-left: 12px;
+  margin-bottom: 4px;
+  text-transform: uppercase;
+  font-size: 0.85rem;
+  color: #383838;
+}
+
+form > input,
+form > select {
+  border-radius: 6px;
+  height: 44px;
+  border: 1px solid lightgray;
+  padding: 12px;
+  outline: none;
+}
+
+form > input,
+form > select,
+::placeholder {
+  font-family: sans-serif;
+  font-weight: 300;
+  color: #b3b3b3;
+  letter-spacing: 0.03rem;
+}
+
+form > select,
+form > select::placeholder {
+  background-color: #f3f3f3;
+  color: #383838;
+}
+
+form > select::placeholder {
+  font-weight: bold;
+}
+
+.btn-wrapper {
+  margin-top: 20px;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.btn-wrapper > button {
+  padding: 12px 28px;
+  border-radius: 24px;
+  text-transform: uppercase;
+  font-weight: bold;
+  border: none;
+  background-color: #ec5d57;
+  color: white;
+  letter-spacing: 0.05rem;
+}
