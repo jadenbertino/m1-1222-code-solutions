@@ -15,7 +15,7 @@
   background-color: red;
 }
 
-.grades-table > thead {
+.grades-table-header {
   background-color: black;
   color: white;
 }
