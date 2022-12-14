@@ -1,0 +1,30 @@
+* {
+  font-family: Roboto, sans-serif;
+}
+
+.btn {
+  background-color: lightgray;
+  padding: 12px 24px;
+  border: none;
+  border-radius: 4px;
+  transition: background-color 150ms ease-in;
+  cursor: pointer;
+}
+
+.btn:hover {
+  background-color: red;
+}
+
+.grades-table-header {
+  background-color: black;
+  color: white;
+}
+
+.grades-table-body > tr:nth-child(odd) {
+  background-color: lightgray;
+}
+
+.grades-table td,
+.grades-table th {
+  padding: 4px 8px;
+}
