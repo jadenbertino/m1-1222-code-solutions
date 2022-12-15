@@ -1,0 +1,100 @@
+@font-face {
+  font-family: "Atlas Grotesk";
+  src: url("AtlasGrotesk-Light-web.woff2"), url("AtlasGrotesk-Medium-Web.woff2");
+}
+
+@font-face {
+  font-family: "Brandon Grotesque";
+  src:
+    url("BrandonGrotesque-Regular.woff2"),
+    url("BrandonGrotesque-Medium.woff2");
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: sans-serif;
+}
+
+.container {
+  padding: 25px 0;
+}
+
+.row {
+  max-width: 500px;
+  width: 100%;
+  margin: 0 auto;
+}
+
+h3,
+label {
+  text-transform: uppercase;
+  font-family: "Brandon Grotesque", sans-serif;
+}
+
+h3 {
+  color: #ec5d57;
+  text-align: center;
+  font-size: 1.5rem;
+  letter-spacing: 0.1em;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+}
+
+label {
+  margin-top: 16px;
+  font-weight: bold;
+  padding-left: 12px;
+  margin-bottom: 4px;
+  text-transform: uppercase;
+  font-size: 0.85rem;
+  color: #505050;
+}
+
+input,
+select {
+  border-radius: 6px;
+  height: 44px;
+  padding: 12px;
+  outline: none;
+  border: 1px solid lightgray;
+}
+
+input,
+input::placeholder {
+  color: #9c9c9c;
+  letter-spacing: 0.03rem;
+}
+
+select {
+  background-color: #f3f3f3;
+  color: #505050;
+  font-weight: bold;
+}
+
+.btn-wrapper {
+  margin-top: 16px;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.submit-btn {
+  padding: 12px 28px;
+  border-radius: 24px;
+  text-transform: uppercase;
+  font-weight: bold;
+  border: none;
+  background-color: #ec5d57;
+  color: white;
+  letter-spacing: 0.05rem;
+  transition: opacity 250ms ease;
+}
+
+.btn-wrapper > button:hover {
+  cursor: pointer;
+  opacity: 0.9;
+}
