@@ -1,0 +1,33 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: sans-serif;
+}
+
+div > img {
+  width: 100%;
+}
+
+.container {
+  max-width: 800px;
+  width: 100%;
+  margin: 0 auto;
+}
+
+.row {
+  display: flex;
+  margin: 24px 0;
+}
+
+.col-one-third {
+  flex-basis: calc(100%/3);
+}
+
+.col-one-fourth {
+  flex-basis: calc(25%);
+}
+
+.col-two-thirds {
+  flex-basis: calc(200%/3);
+}
