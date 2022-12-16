@@ -20,12 +20,16 @@ div > img {
   margin: 24px 0;
 }
 
+.col {
+  flex-basis: 1;
+}
+
 .col-one-third {
   flex-basis: calc(100%/3);
 }
 
 .col-one-fourth {
-  flex-basis: calc(25%);
+  flex-basis: 25%;
 }
 
 .col-two-thirds {
