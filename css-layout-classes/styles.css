@@ -21,7 +21,7 @@ div > img {
 }
 
 .col {
-  flex-basis: 1;
+  flex-basis: 100%;
 }
 
 .col-one-third {
