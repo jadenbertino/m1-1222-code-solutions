@@ -41,17 +41,9 @@ h2 {
   margin-bottom: 12px;
 }
 
-#locations,
-#cta,
-.header-container,
-#footer-legal {
-  padding-top: 40px;
-  padding-bottom: 40px;
-}
-
 /*
 
-    REUSABLES
+REUSABLES
 
 */
 
@@ -60,6 +52,16 @@ h2 {
   width: 100%;
   max-width: 1280px;
   padding: 0 40px;
+}
+
+.row {
+  margin-top: 50px;
+  margin-bottom: 50px;
+}
+
+.row-inner {
+  padding-top: 50px;
+  padding-bottom: 50px;
 }
 
 .col-one-half {
@@ -95,11 +97,12 @@ h2 {
     NAV
 
 */
+
 nav {
   border-bottom: #e7e9ec 2px solid;
 }
 
-.nav {
+.row-nav {
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -129,9 +132,7 @@ nav {
 
 */
 
-.header-container {
-  margin-top: 60px;
-  margin-bottom: 60px;
+.row-header {
   display: flex;
   align-items: center;
   background-image: url("./images/hero.jpg");
@@ -143,6 +144,7 @@ nav {
   color: #fff;
   position: relative;
   filter: saturate(70%);
+  padding: 48px 0;
 }
 
 .header-img-overlay {
@@ -210,7 +212,7 @@ nav {
   color: #6e6e6e;
 }
 
-#cta > .container {
+.row-cta {
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -225,12 +227,12 @@ nav {
 #footer-main {
   background-color: #525351;
   color: white;
-  padding: 100px 0;
 }
 
-#footer-main > .container {
+.row-footer {
   display: flex;
   justify-content: space-between;
+  padding: 100px 0;
 }
 
 .logo-wrapper {
