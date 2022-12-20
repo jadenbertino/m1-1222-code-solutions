@@ -1,0 +1,82 @@
+/*
+Colors
+- navy blue = #0A4265
+- gray (nav text) = #A0A0A0
+- light gray = #FAFAFA
+- gray (body text)zzz = #FAFAFA
+- gray (footer bg) = #525351
+*/
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: sans-serif;
+}
+
+img {
+  width: 100%;
+}
+
+a,
+a:visited {
+  text-decoration: none;
+  color: inherit;
+}
+
+/*
+
+    REUSABLES
+
+*/
+
+.container {
+  width: 100%;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.btn {
+  color: #fff;
+  background-color: #0a4265;
+  padding: 12px;
+  border-radius: 4px;
+  border: none;
+  overflow: hidden;
+  cursor: pointer;
+}
+
+/*
+
+    NAV
+
+*/
+nav {
+  border-bottom: #e7e9ec 2px solid;
+}
+
+.nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 80px;
+}
+
+.nav-logo-wrapper {
+  width: 120px;
+}
+
+.nav-list {
+  display: flex;
+  align-items: center;
+  list-style-type: none;
+  font-size: 16px;
+  color: #a0a0a0;
+}
+
+.nav-list-item {
+  margin-right: 40px;
+}
