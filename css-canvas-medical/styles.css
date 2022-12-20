@@ -26,14 +26,15 @@ a,
 a:visited {
   text-decoration: none;
   color: inherit;
+  cursor: pointer;
+}
+
+button {
+  cursor: pointer;
 }
 
 h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
+h2 {
   font-family: "Tiempos Headline", serif;
   line-height: 1.2;
   margin-bottom: 12px;
@@ -46,9 +47,23 @@ h6 {
 */
 
 .container {
-  width: 100%;
-  max-width: 1200px;
   margin: 0 auto;
+  width: 100%;
+  max-width: 1280px;
+  padding: 0 40px;
+}
+
+.col-one-half {
+  width: 50%;
+}
+
+.col-one-quarter {
+  width: 25%;
+}
+
+.fc {
+  display: flex;
+  flex-direction: column;
 }
 
 .btn {
@@ -58,7 +73,6 @@ h6 {
   border-radius: 4px;
   border: none;
   overflow: hidden;
-  cursor: pointer;
 }
 
 .btn-large {
@@ -106,9 +120,10 @@ nav {
 
 */
 
-.header {
+.header-container {
   margin-top: 60px;
   margin-bottom: 60px;
+  padding: 40px 0;
   display: flex;
   align-items: center;
   background-image: url("./images/hero.jpg");
@@ -193,4 +208,48 @@ nav {
   display: flex;
   justify-content: space-between;
   align-items: center;
+}
+
+/*
+
+    FOOTER
+
+*/
+
+#footer-main {
+  background-color: #525351;
+  color: white;
+  padding: 100px 0;
+}
+
+#footer-main > .container {
+  display: flex;
+  justify-content: space-between;
+}
+
+.logo-wrapper {
+  width: 160px;
+}
+
+.logo-white {
+  filter: brightness(0) invert(1);
+  margin-bottom: 24px;
+}
+
+.footer-title {
+  margin-bottom: 12px;
+  font-weight: bold;
+}
+
+.footer-link {
+  margin-bottom: 8px;
+}
+
+#footer-legal {
+  padding: 40px 0;
+}
+
+.link-legal {
+  color: #6e6e6e;
+  margin-right: 32px;
 }
