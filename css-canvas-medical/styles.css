@@ -3,7 +3,7 @@ Colors
 - navy blue = #0A4265
 - gray (nav text) = #A0A0A0
 - light gray = #FAFAFA
-- gray (body text)zzz = #FAFAFA
+- gray (body text)zzz = #6e6e6e
 - gray (footer bg) = #525351
 */
 
@@ -15,6 +15,7 @@ Colors
 
 body {
   font-family: sans-serif;
+  line-height: 1.75;
 }
 
 img {
@@ -34,6 +35,7 @@ h4,
 h5,
 h6 {
   font-family: "Tiempos Headline", serif;
+  margin-bottom: 12px;
 }
 
 /*
@@ -98,6 +100,7 @@ nav {
 
 .header {
   margin-top: 60px;
+  margin-bottom: 60px;
   display: flex;
   align-items: center;
   background-image: url("./images/hero.jpg");
@@ -127,15 +130,47 @@ nav {
 }
 
 .header-title {
-  font-size: 32px;
+  font-size: 40px;
 }
 
 .header-para {
-  margin: 24px 0;
-  line-height: 1.5;
+  margin-bottom: 24px;
 }
 
 .header-btn {
   padding: 16px 40px;
+  font-size: 16px;
+}
+
+/*
+
+    LOCATIONS
+
+*/
+
+#locations {
+  text-align: center;
+  color: #6e6e6e;
+  background-color: #fafafa;
+  padding-top: 32px;
+}
+
+.section-header {
+  font-size: 32px;
+}
+
+#locations .section-para {
+  max-width: 500px;
+  margin: 0 auto 40px;
+}
+
+.locations-list {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.location {
+  width: 50%;
+  margin-bottom: 16px;
   font-size: 16px;
 }
