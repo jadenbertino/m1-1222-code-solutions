@@ -78,6 +78,8 @@ nav {
 
 .nav-logo-wrapper {
   width: 120px;
+  display: flex;
+  align-items: center;
 }
 
 .nav-list {
