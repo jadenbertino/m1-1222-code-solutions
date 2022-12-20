@@ -145,22 +145,24 @@ nav {
 }
 
 .mobile-popup-wrapper {
-  display: none;
-}
-
-.mobile-popup-wrapper.active {
+  transition: transform 400ms ease-in;
   position: fixed;
-  left: 0;
-  right: 0;
-  bottom: 0;
   top: 0;
-  z-index: 10;
-  background-color: rgb(0 0 0 / 50%);
+  bottom: 0;
+  right: -150%;
+  width: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
+  z-index: 10;
+  background-color: rgb(0 0 0 / 50%);
   backdrop-filter: blur(10px);
   box-shadow: 0 0 75px 10px #000;
+}
+
+.mobile-popup-wrapper.active {
+  transform: translateX(-150%);
+  transition: transform 400ms ease-in;
 }
 
 .mobile-popup {
@@ -182,14 +184,14 @@ nav {
   background-color: rgb(0 0 0 / 0%);
   border: none;
   padding: 8px;
+  position: absolute;
+  right: 40px;
+  top: 40px;
 }
 
 .fa-times {
   font-size: 40px;
   color: white;
-  position: absolute;
-  right: 40px;
-  top: 40px;
 }
 
 /*
