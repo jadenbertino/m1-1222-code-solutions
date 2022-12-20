@@ -270,6 +270,10 @@ nav {
   margin-bottom: 16px;
 }
 
+.location-break {
+  display: none;
+}
+
 /*
 
     CTA
@@ -351,6 +355,19 @@ nav {
 
   .nav-list {
     display: none;
+  }
+
+  #hero > .container {
+    padding: 0;
+  }
+
+  .header-content {
+    max-width: 100%;
+    padding: 0 40px;
+  }
+
+  .location-break {
+    display: block;
   }
 }
 
