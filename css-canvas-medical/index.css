@@ -108,6 +108,10 @@ REUSABLES
   align-items: center;
 }
 
+.ais {
+  align-items: start;
+}
+
 .fc {
   display: flex;
   flex-direction: column;
@@ -326,6 +330,16 @@ nav {
   padding: 100px 0;
 }
 
+.footer-col {
+  display: flex;
+  flex-direction: column;
+  width: 25%;
+}
+
+.footer-col:first-child {
+  margin-right: auto;
+}
+
 .logo-wrapper {
   width: 160px;
 }
@@ -346,6 +360,10 @@ nav {
 
 .link-legal {
   margin-right: 32px;
+}
+
+.company-info {
+  line-height: 1.5;
 }
 
 /*
@@ -386,6 +404,44 @@ nav {
 
   .location-break {
     display: block;
+  }
+
+  .row-cta {
+    flex-direction: column;
+  }
+
+  #cta .btn-wrapper {
+    margin-top: 24px;
+  }
+
+  .row-footer {
+    flex-direction: column;
+    padding: 50px 0;
+  }
+
+  #footer .col-one-half {
+    width: 100%;
+  }
+
+  .footer-col {
+    width: 100%;
+    justify-content: start;
+    align-items: center;
+    text-align: center;
+    margin-bottom: 32px;
+  }
+
+  .footer-col:last-child {
+    margin-bottom: 0;
+  }
+
+  .logo-white {
+    margin-bottom: 12px;
+  }
+
+  #footer-legal .row {
+    display: flex;
+    justify-content: center;
   }
 }
 
