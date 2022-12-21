@@ -10,3 +10,9 @@ function togglePopUp() {
 [popUp, hamburgerBtn, xIcon, xBtn].forEach(elem => {
   elem.addEventListener('click', togglePopUp);
 });
+
+window.addEventListener('resize', () => {
+  if (window.innerWidth > 768) {
+    popUp.classList.remove('active');
+  }
+});
