@@ -2,8 +2,8 @@
 Colors
 - navy blue = #0A4265
 - gray (nav text) = #A0A0A0
-- light gray = #FAFAFA
 - gray (body text)zzz = #6e6e6e
+- light gray (section bg) = #FAFAFA
 - gray (footer bg) = #525351
 */
 
@@ -17,6 +17,7 @@ body {
   font-family: Avenir, sans-serif;
   line-height: 1.75;
   font-size: 18px;
+  color: #6e6e6e;
 }
 
 img {
@@ -73,11 +74,6 @@ REUSABLES
   width: 25%;
 }
 
-.fc {
-  display: flex;
-  flex-direction: column;
-}
-
 .btn {
   color: #fff;
   background-color: #0a4265;
@@ -99,6 +95,25 @@ REUSABLES
   margin-top: 12px;
 }
 
+.text-center {
+  text-align: center;
+}
+
+.text-navy {
+  color: #0a4265;
+}
+
+.df {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.fc {
+  display: flex;
+  flex-direction: column;
+}
+
 /*
 
     NAV
@@ -106,7 +121,7 @@ REUSABLES
 */
 
 nav {
-  border-bottom: #e7e9ec 2px solid;
+  border-bottom: #e7e9ec 1px solid;
 }
 
 .row-nav {
@@ -142,7 +157,6 @@ nav {
 
 .fa-bars {
   font-size: 24px;
-  color: #6e6e6e;
   pointer-events: none;
 }
 
@@ -258,8 +272,6 @@ nav {
 */
 
 #locations {
-  text-align: center;
-  color: #6e6e6e;
   background-color: #fafafa;
 }
 
@@ -291,10 +303,6 @@ nav {
     CTA
 
 */
-
-#cta {
-  color: #6e6e6e;
-}
 
 .row-cta {
   display: flex;
@@ -338,7 +346,6 @@ nav {
 }
 
 .link-legal {
-  color: #6e6e6e;
   margin-right: 32px;
 }
 
