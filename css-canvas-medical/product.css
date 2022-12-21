@@ -18,8 +18,10 @@ main > *:nth-child(odd) {
   background-color: #fbfbfb;
 }
 
-.header-content {
-  max-width: 50%;
+@media (min-width: 1201px) {
+  .header-content {
+    max-width: 50%;
+  }
 }
 
 .col-one-half:nth-child(even).section-text {
