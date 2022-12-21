@@ -22,6 +22,10 @@ main > *:nth-child(odd) {
   .header-content {
     max-width: 50%;
   }
+
+  #performance .row-inner {
+    padding: 100px 0;
+  }
 }
 
 .col-one-half:nth-child(even).section-text {
@@ -30,10 +34,6 @@ main > *:nth-child(odd) {
 
 .col-one-half:nth-child(odd).section-text {
   margin-right: 150px;
-}
-
-#performance .row-inner {
-  padding: 100px 0;
 }
 
 #performance {
