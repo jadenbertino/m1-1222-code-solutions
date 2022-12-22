@@ -377,6 +377,10 @@ FOOTER
 }
 
 @media (max-width: 768px) {
+  .container {
+    padding: 0 24px;
+  }
+
   .nav-hamburger-btn {
     display: block;
   }
@@ -438,5 +442,9 @@ FOOTER
   }
 }
 
-/* @media (max-width: 576px) {
-} */
+@media (max-width: 576px) {
+  .header-content {
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+}

@@ -4,6 +4,12 @@
 
 .section-title {
   margin-bottom: 24px;
+  text-align: center;
+}
+
+.section-title-team {
+  font-size: 40px;
+  margin-bottom: 40px;
 }
 
 .container-small {
@@ -24,4 +30,49 @@
 
 .team-member-img {
   border-radius: 50%;
+  width: 80%;
+  max-width: 200px;
+}
+
+.board-members {
+  text-align: center;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.board-member {
+  margin-top: 32px;
+  width: calc(100%/3);
+}
+
+#team,
+#board {
+  background-color: #fbfbfb;
+}
+
+@media (max-width: 992px) {
+  .team-member {
+    padding: 24px 4px;
+  }
+}
+
+@media (max-width: 768px) {
+  .team-member {
+    width: 50%;
+  }
+
+  .board-member {
+    width: 50%;
+  }
+}
+
+@media (max-width: 576px) {
+  .team-member {
+    width: 100%;
+  }
+
+  .board-member {
+    width: 100%;
+  }
 }
