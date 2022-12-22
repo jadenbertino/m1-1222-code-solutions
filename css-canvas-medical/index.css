@@ -57,11 +57,6 @@ REUSABLES
 }
 
 .row {
-  margin-top: 50px;
-  margin-bottom: 50px;
-}
-
-.row-inner {
   padding-top: 50px;
   padding-bottom: 50px;
 }
@@ -220,7 +215,7 @@ nav {
 
 */
 
-.row-header {
+.header {
   position: relative;
   display: flex;
   align-items: center;
@@ -255,7 +250,7 @@ nav {
 }
 
 .header-content {
-  max-width: 50%;
+  max-width: 55%;
   padding-left: 50px;
 }
 
@@ -273,13 +268,12 @@ nav {
     LOCATIONS
 
 */
+.section-title {
+  font-size: 32px;
+}
 
 #locations {
   background-color: #fafafa;
-}
-
-.section-header {
-  font-size: 32px;
 }
 
 #locations .section-para {
@@ -303,21 +297,19 @@ nav {
 
 /*
 
-    CTA
+FOOTER
 
 */
+
+#cta {
+  border-top: 1px solid #e7e9ec;
+}
 
 .row-cta {
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
-
-/*
-
-    FOOTER
-
-*/
 
 #footer-main {
   background-color: #525351;
@@ -399,7 +391,8 @@ nav {
 
   .header-content {
     max-width: 100%;
-    padding: 0 40px;
+    padding-left: 40px;
+    padding-right: 40px;
   }
 
   .location-break {
