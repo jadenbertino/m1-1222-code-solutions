@@ -56,6 +56,10 @@ REUSABLES
   position: relative;
 }
 
+.container-600 {
+  max-width: 600px;
+}
+
 .row {
   padding-top: 50px;
   padding-bottom: 50px;
