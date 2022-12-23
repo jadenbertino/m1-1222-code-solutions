@@ -59,6 +59,9 @@ img {
 .feature {
   padding: 20px;
   margin-top: 50px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .feature-icon {
@@ -79,18 +82,14 @@ img {
 
 @media (max-width: 992px) {
   .feature {
-    width: 40%;
-  }
-}
-
-@media (max-width: 768px) {
-  .feature {
     width: 50%;
     padding: 6px;
   }
-}
 
-@media (max-width: 576px) {
+  .feature-img-wrapper {
+    max-width: 300px;
+  }
+
   .feature-icon {
     width: 50px;
   }
