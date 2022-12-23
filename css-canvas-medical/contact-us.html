@@ -14,78 +14,155 @@
       crossorigin="anonymous"></script>
   </head>
   <body>
-    <header>
-      <nav>
-        <div class="container">
-          <div class="row-nav">
-            <a class="nav-logo-wrapper" href="index.html">
-              <img src="./images/logo-blue.svg" alt="logo" />
-            </a>
-            <ul class="nav-list">
-              <li class="nav-list-item">
-                <a href="product.html">Product</a>
-              </li>
-              <li class="nav-list-item">
-                <a href="implementation.html">Implementation</a>
-              </li>
-              <li class="nav-list-item">
-                <a href="about-us.html">About Us</a>
-              </li>
-              <li class="nav-list-item text-navy">
-                <a href="blog.html">Blog</a>
-              </li>
-              <li class="nav-list-item">
-                <a class="btn" href="contact-us.html">Contact Us</a>
-              </li>
-            </ul>
-            <button class="nav-hamburger-btn">
-              <i class="fa-solid fa-bars"></i>
+    <nav>
+      <div class="container">
+        <div class="row-nav">
+          <a class="nav-logo-wrapper" href="index.html">
+            <img src="./images/logo-blue.svg" alt="logo" />
+          </a>
+          <ul class="nav-list">
+            <li class="nav-list-item">
+              <a href="product.html">Product</a>
+            </li>
+            <li class="nav-list-item">
+              <a href="implementation.html">Implementation</a>
+            </li>
+            <li class="nav-list-item">
+              <a href="about-us.html">About Us</a>
+            </li>
+            <li class="nav-list-item">
+              <a href="blog.html">Blog</a>
+            </li>
+            <li class="nav-list-item">
+              <a class="btn" href="contact-us.html">Contact Us</a>
+            </li>
+          </ul>
+          <button class="nav-hamburger-btn">
+            <i class="fa-solid fa-bars"></i>
+          </button>
+          <div class="mobile-popup-wrapper">
+            <div class="mobile-popup">
+              <ul class="mobile-list">
+                <li class="mobile-list-item">
+                  <a href="index.html">Home</a>
+                </li>
+                <li class="mobile-list-item">
+                  <a href="product.html">Product</a>
+                </li>
+                <li class="mobile-list-item">
+                  <a href="implementation.html">Implementation</a>
+                </li>
+                <li class="mobile-list-item">
+                  <a href="about-us.html">About Us</a>
+                </li>
+                <li class="mobile-list-item">
+                  <a href="blog.html">Blog</a>
+                </li>
+                <li class="mobile-list-item">
+                  <a class="btn btn-xlg" href="contact-us.html">Contact Us</a>
+                </li>
+              </ul>
+            </div>
+            <button class="nav-x-btn">
+              <i class="fas fa-times"></i>
             </button>
-            <div class="mobile-popup-wrapper">
-              <div class="mobile-popup">
-                <ul class="mobile-list">
-                  <li class="mobile-list-item">
-                    <a href="index.html">Home</a>
-                  </li>
-                  <li class="mobile-list-item">
-                    <a href="product.html">Product</a>
-                  </li>
-                  <li class="mobile-list-item">
-                    <a href="implementation.html">Implementation</a>
-                  </li>
-                  <li class="mobile-list-item">
-                    <a href="about-us.html">About Us</a>
-                  </li>
-                  <li class="mobile-list-item">
-                    <a href="blog.html">Blog</a>
-                  </li>
-                  <li class="mobile-list-item">
-                    <a class="btn btn-xlg" href="contact-us.html">Contact Us</a>
-                  </li>
-                </ul>
-              </div>
-              <button class="nav-x-btn">
-                <i class="fas fa-times"></i>
-              </button>
+          </div>
+        </div>
+      </div>
+    </nav>
+    <main>
+      <section id="contact">
+        <div class="container container-contact-us">
+          <div class="row row-contact-us">
+            <div class="col-one-half col-left">
+              <h1 class="section-title">Get in touch with Canvas</h1>
+              <p class="text-navy phone-number">(800) 555-5555</p>
+              <p class="section-para">
+                We would be delighted to show you a demo, put you in touch with
+                current customers, get you started with access to a sandbox, and
+                answer any questions you have about working with Canvas.
+              </p>
+            </div>
+            <div class="col-one-half col-right">
+              <form action="">
+                <input type="text" class="form-input" placeholder="Name" />
+                <input
+                  type="text"
+                  class="form-input"
+                  placeholder="Practice Name" />
+                <input
+                  type="email"
+                  class="form-input"
+                  placeholder="email@domain.com" />
+                <input
+                  type="text"
+                  class="form-input"
+                  placeholder="Phone (optional)" />
+                <textarea
+                  class="form-input form-input-textarea"
+                  placeholder="Tell us more about your practice and interest in Canvas. (optional)"></textarea>
+                <button class="btn btn-lg form-submit-btn">Subscribe</button>
+              </form>
             </div>
           </div>
         </div>
-      </nav>
-      <section id="landing">
-        <div class="container container-600">
-          <div class="row">
-            <h1 class="section-title">Canvas Medical News and Insights</h1>
-            <p class="section-para">
-              Subscribe for updates, data, and essays on American primary care
-            </p>
-            <form action="">
-              <input
-                type="email"
-                class="input-email"
-                placeholder="Enter your email address" />
-              <button class="btn btn-lg form-submit-btn">Subscribe</button>
-            </form>
+      </section>
+    </main>
+    <footer>
+      <section id="cta">
+        <div class="container">
+          <div class="row row-cta">
+            <div class="cta-text">
+              <h2 class="section-title">Ready to learn more?</h2>
+              <p class="section-para">Schedule a private meeting now</p>
+            </div>
+            <div class="btn-wrapper">
+              <button class="btn btn-lg">Get started</button>
+            </div>
           </div>
         </div>
       </section>
-    </header>
+      <section id="footer-main">
+        <div class="container">
+          <div class="row-footer">
+            <div class="footer-col">
+              <a class="logo-wrapper" href="index.html">
+                <img src="./images/logo-blue.svg" class="logo-white" />
+              </a>
+              <p>
+                2307 Irving Street, Suite 228<br />
+                San Francisco CA 94122<br />
+                (800) 370-1416<br />
+                <a href="mailto:info@canvasmedical.com" target="_blank">
+                  info@canvasmedical.com
+                </a>
+              </p>
+            </div>
+            <div class="footer-col">
+              <span class="footer-title">COMPANY</span>
+              <a class="footer-link" href="about-us.html">About Us</a>
+              <a class="footer-link" href="blog.html">Blog</a>
+            </div>
+            <div class="footer-col">
+              <span class="footer-title">PRODUCT</span>
+              <a class="footer-link" href="product.html">Product</a>
+              <a class="footer-link" href="implementation.html"
+                >Implementation</a
+              >
+              <a class="footer-link" href="">For Health Plans</a>
+              <a class="footer-link" href="">Security</a>
+            </div>
+          </div>
+        </div>
+      </section>
+      <section id="footer-legal">
+        <div class="container">
+          <div class="row">
+            <a class="link-legal">Privacy &amp; Terms</a>
+            <a class="link-legal" href="contact-us.html">Contact Us</a>
+          </div>
+        </div>
+      </section>
+    </footer>
+  </body>
+</html>
