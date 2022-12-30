@@ -1,25 +1,34 @@
 function convertMinutesToSeconds(minutes) {
-  return minutes * 60;
+  const seconds = minutes * 60;
+  return seconds;
 }
-console.log('convertMinutesToSeconds(5):', convertMinutesToSeconds(5));
+const convertMinutesToSecondsResult = convertMinutesToSeconds(5);
+console.log('convertMinutesToSecondsResult:', convertMinutesToSecondsResult);
 
 function greet(name) {
-  return `Hola ${name}, como estas?`;
+  const greeting = `Hola ${name}, como estas?`;
+  return greeting;
 }
-console.log('greet("Ryan"):', greet('Ryan'));
+const greetResult = greet('Ryan');
+console.log('greetResult:', greetResult);
 
 function getArea(width, height) {
-  return width * height;
+  const area = width * height;
+  return area;
 }
-console.log('getArea(17, 42):', getArea(17, 42));
+const getAreaResult = getArea(17, 42);
+console.log('getAreaResult:', getAreaResult);
 
 function getFirstName(person) {
-  return person.firstName;
+  const firstName = person.firstName;
+  return firstName;
 }
-console.log("getFirstName({ firstName: 'Lelouche', lastName: 'Lamperouge' }):", getFirstName({ firstName: 'Lelouche', lastName: 'Lamperouge' }));
+const getFirstNameResult = getFirstName({ firstName: 'Lelouche', lastName: 'Lamperouge' });
+console.log('getFirstNameResult:', getFirstNameResult);
 
 function getLastElement(array) {
-  return array[array.length - 1]
+  const lastElement = array[array.length - 1]
+  return lastElement
 }
-console.log("getLastElement(['propane', 'and', 'propane', 'accessories']):", getLastElement(['propane', 'and', 'propane', 'accessories']));
-
+const getLastElementResult = getLastElement(['propane', 'and', 'propane', 'accessories']);
+console.log('getLastElementResult:', getLastElementResult);
