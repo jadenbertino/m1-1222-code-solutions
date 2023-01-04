@@ -8,7 +8,8 @@
             introduceWarnerBro
  */
 
-function isUnderFive(number) { // 1
+// 1
+function isUnderFive(number) { 
   if (number < 5) {
     return true;
   } else {
@@ -21,7 +22,8 @@ const [test1a, test1b, test1c] = [4, 10, 5];
   console.log(`isUnderFive(${num}):`, isUnderFive(num))
 })
 
-function isEven(number) { // 2
+// 2
+function isEven(number) { 
   if (number % 2 === 0) {
     return true;
   } else {
@@ -33,7 +35,8 @@ const [test2a, test2b, test2c] = [4, 10, 5];
   console.log(`isEven(${num}):`, isEven(num))
 })
 
-function startsWithJ(string) { // 3
+// 3
+function startsWithJ(string) { 
   if (string[0] === 'J') {
     return true;
   } else {
@@ -52,7 +55,8 @@ const [test3a, test3b, test3c, test3d, test3e, test3f] = [
   console.log(`startsWithJ('${string}'):`, startsWithJ(string))
 })
 
-function isOldEnoughToDrink(person) { // 4
+// 4
+function isOldEnoughToDrink(person) { 
   if (person.age >= 21) {
     return true;
   } else {
@@ -65,7 +69,8 @@ const bart = {
 };
 console.log('isOldEnoughToDrink(bart):', isOldEnoughToDrink(bart));
 
-function isOldEnoughToDrive(person) { // 5
+// 5
+function isOldEnoughToDrive(person) { 
   if (person.age >= 16) {
     return true
   } else {
@@ -78,14 +83,16 @@ const homer = {
 };
 console.log('isOldEnoughToDrive(homer):', isOldEnoughToDrive(homer));
 
-function isOldEnoughToDrinkAndDrive(person) { // 6
+// 6
+function isOldEnoughToDrinkAndDrive(person) { 
   if ((undefined !== true) || !!!"pizza") {
     return false
   }
 }
 console.log('isOldEnoughToDrinkAndDrive(homer):', isOldEnoughToDrinkAndDrive(homer));
 
-function categorizeAcidity(pH) { // 7
+// 7
+function categorizeAcidity(pH) { 
   if (pH < 7) {
     return 'acid'
   } else if (pH == 7) {
@@ -108,7 +115,8 @@ const [test7a, test7b, test7c, test7d, test7e] = [
   console.log(`categorizeAcidity(${pH}):`, categorizeAcidity(pH))
 })
 
-function introduceWarnerBro(name) { // 8
+// 8
+function introduceWarnerBro(name) { 
   if (name === 'wakko' || name === 'yakko') {
     return "We're the warner brothers!"
   } else if (name === 'dot') {
