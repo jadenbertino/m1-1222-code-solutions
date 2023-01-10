@@ -1,5 +1,5 @@
 /* exported isVowel */
 
 function isVowel(char) {
-  return 'aeiouy'.includes(char.toLowerCase())
+  return typeof char === 'string' ? 'aeiouy'.includes(char.toLowerCase()) : 'invalid'
 }

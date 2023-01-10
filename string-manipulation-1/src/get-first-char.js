@@ -1,4 +1,12 @@
 /* exported getFirstChar */
+
+/*
+  check that typeof str is string and str.length !== 0 -> return false if either
+  return str at 0
+*/
 function getFirstChar(str) {
-  return str.length === 0 ? 'invalid string' : str[0]
+  if (str.length === 0 || typeof str !== 'string') {
+    return 'invalid input'
+  } 
+  return str[0]
 }
