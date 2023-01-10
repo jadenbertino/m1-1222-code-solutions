@@ -9,6 +9,7 @@
 
 function isLowerCased(word) {
   if (typeof word !== 'string') {return 'invalid'}
-  const upperCaseChars = word.split('').filter(char => char.toUpperCase() === char && char.toUpperCase() !== char.toLowerCase())
-  return upperCaseChars.length === 0
+  return word.toLowerCase() === word
+  // const upperCaseChars = word.split('').filter(char => char.toUpperCase() === char && char.toUpperCase() !== char.toLowerCase())
+  // return upperCaseChars.length === 0
 }
