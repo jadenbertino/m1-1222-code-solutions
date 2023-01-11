@@ -12,6 +12,8 @@
 
 function chunk(arr, size) {
   if (!Array.isArray(arr) || typeof size !== 'number' || size < 0) return 'invalid'
+
+  // No .slice solution
   const chunkedArr = []
   let holdArr = []
   for (let i = 0; i < arr.length; i++) {
@@ -22,4 +24,11 @@ function chunk(arr, size) {
     }
   }
   return chunkedArr
+  
+  // .slice solution
+  // const chunked = []
+  // for (let i = 0; i < arr.length; i += size) {
+  //   chunked.push(arr.slice(i, i + size))
+  // }
+  // return chunked;
 }
