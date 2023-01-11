@@ -1,9 +1,11 @@
 /* exported pick */
 
 /*
-  iterate through list of keys
-  check if key in source && obj[key] is not undefined
-    yes -> add to new object
+  create function pick which two args: obj (object) and keys (array of strings)
+  create empty array literal and store in newObj variable
+  iterate through each key in keys variable
+    check if key in source && obj[key] is not undefined
+      yes -> set key property of newObj to key property of obj
 */
 
 function pick(obj, keys) {

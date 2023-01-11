@@ -1,12 +1,14 @@
 /* exported defaults */
 
 /*
-  iterate through source object keys
-  if that key not in target keys then add to it
+  create function defaults that takes two objects as arguments: target and source
+  iterate through each key in source
+    if source key not in target object
+      then add source key & vaue to target object
 */
 
 function defaults(target, source) {
-  for (let sourceKey of Object.keys(source)) {
+  for (const sourceKey in source) {
     if (!Object.keys(target).includes(sourceKey)) {
       target[sourceKey] = source[sourceKey]
     }
