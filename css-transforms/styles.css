@@ -44,5 +44,5 @@ button:focus {
 }
 
 .pokeball-wrapper > button:active {
-  transform: translateY(-0.25rem)
+  transform: translateY(0.25rem)
 }
