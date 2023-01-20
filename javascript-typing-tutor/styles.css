@@ -8,6 +8,8 @@ body {
   font-family: monospace;
   font-size: 30px;
   text-align: center;
+  color: #1C1C1C;
+  background-color: #F5F3ED;
 }
 
 .hidden {
@@ -28,16 +30,16 @@ body {
 
 .active {
   padding-bottom: 6px;
-  border-bottom: 2px solid black;
+  border-bottom: 2px solid #1C1C1C;
 }
 
 .correct {
-  color: #18CD1B;
+  color: #3DA35D;
 }
 
 .incorrect {
-  color: #F80606;
-  border-color: #F80606;
+  color: #fd2a2a;
+  border-color: #fd2a2a;
 }
 
 .game-over {
@@ -48,7 +50,7 @@ body {
   padding: 12px 30px;
   font-size: 16px;
   border: none;
-  background-color: lightgreen;
+  background-color: #04F06A;
   border-radius: 8px;
   cursor: pointer;
   box-shadow: 0 5px 10px 0 rgba(0, 0, 0, 0.1);
@@ -71,4 +73,34 @@ body {
 .start-screen img {
   margin-top: 40px;
   max-width: 400px;
+}
+
+/*
+  
+    DARK MODE
+
+*/
+
+.dark,
+.dark button,
+.dark .active {
+  color: #F5F3ED;
+  border-color: #F5F3ED;
+}
+
+.dark button {
+  background-color: #3DA35D;
+}
+
+.dark .correct {
+  color: #3DA35D;
+}
+
+.dark .container {
+  background-color:#1C1C1C;
+}
+
+.dark .incorrect {
+  color: #D33F49;
+  border-color: #D33F49;
 }

@@ -12,6 +12,19 @@
   Dark Mode
   ✅ enter -> starts typing test
   Be creative!
+  see monkeytype for more inspo
+  more detailed start screen -- animate 'terrific typing tutor' as if someone was typing it
+*/
+
+/*
+  animate start screen
+
+  create function (sentenceBox, key) that alters html
+
+  async function
+    for loop
+    random wait
+    change class
 */
 
 async function generateSentence(length) {
