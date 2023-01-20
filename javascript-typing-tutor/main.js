@@ -4,8 +4,6 @@
   ✅ Measure time from starting of first typing to finish time and calculate WPM (word per minute)
   ✅ Come up with more set of sentence or words and randomly generate it
   Leaderboard with name and score
-  Time-attack mode (sentence fades away)
-  hide sentence upon game end
   transition
     transition out game start
     transition in sentence
@@ -13,7 +11,6 @@
     transition out game end
   Dark Mode
   enter -> starts typing test
-
   Be creative!
 */
 
@@ -46,7 +43,7 @@ async function newGame() {
   let userTypeCount = 0;
 
   document.addEventListener('keydown', ({ key }) => {
-    if (key !== 'Backspace') {
+    if (key !== 'Backspace' && key !== 'Enter' ) {
       userTypeCount++;
     }
 
@@ -88,7 +85,9 @@ const $gameOverDisplay = document.querySelector('.game-over');
 const $startScreen = document.querySelector('.start-screen')
 const $newGameBtn = document.querySelector('.new-game-btn');
 $newGameBtn.addEventListener('click', newGame)
-
+document.addEventListener('keydown', ({key}) => {
+  if (key === 'Enter' && $sentenceBox.className !== 'sentence') newGame()
+})
 /* 
   event listener on button -> starts new game
   hide button
