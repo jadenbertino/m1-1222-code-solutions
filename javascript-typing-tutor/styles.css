@@ -54,3 +54,16 @@ body {
 .new-game-btn.hidden {
   display: none;
 }
+
+.start-screen.hidden {
+  display: none;
+}
+
+.start-screen h1 {
+  font-size: 50px;
+}
+
+.start-screen img {
+  margin-top: 40px;
+  max-width: 400px;
+}

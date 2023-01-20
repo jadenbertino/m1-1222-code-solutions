@@ -1,5 +1,6 @@
 function newGame() {
   // Game Setup
+  $startScreen.classList.add('hidden')
   $gameOverDisplay.classList.remove('game-over-active')
   $newGameBtn.classList.add('hidden');
   $gameOverDisplay.textContent = '';
@@ -16,7 +17,7 @@ function newGame() {
   $sentenceBox.innerHTML = display;
 
   // listen for keypress -> respond to correct & wrong keypress
-  let $htmlChar = document.querySelector('.char');
+  let $htmlChar = document.querySelector('.char:not(.correct)');
   let targetChar = $htmlChar.textContent;
   let userTypeCount = 0;
   let gameOver = false;
@@ -24,6 +25,7 @@ function newGame() {
   document.addEventListener('keydown', ({ key }) => {
     userTypeCount++;
     gameOver = false;
+    console.log($htmlChar)
     if ($htmlChar) {
       if (key === targetChar) { // correct key
         $htmlChar.className = 'char correct';
@@ -59,7 +61,7 @@ function newGame() {
 
 const $sentenceBox = document.querySelector('.sentence');
 const $gameOverDisplay = document.querySelector('.game-over');
-
+const $startScreen = document.querySelector('.start-screen')
 const $newGameBtn = document.querySelector('.new-game-btn');
 $newGameBtn.addEventListener('click', newGame)
 /* 
