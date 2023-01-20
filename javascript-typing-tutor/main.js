@@ -23,9 +23,10 @@ function newGame() {
   let gameOver = false;
 
   document.addEventListener('keydown', ({ key }) => {
-    userTypeCount++;
+    if (key !== 'Backspace') {
+      userTypeCount++;
+    }
     gameOver = false;
-    console.log($htmlChar)
     if ($htmlChar) {
       if (key === targetChar) { // correct key
         $htmlChar.className = 'char correct';
@@ -52,7 +53,6 @@ function newGame() {
       $gameOverDisplay.className = 'game-over game-over-active';
       $newGameBtn.textContent = 'Play Again?';
       $newGameBtn.classList.remove('hidden');
-      return null
     }
   });
 }
