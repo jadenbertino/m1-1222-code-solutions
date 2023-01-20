@@ -12,6 +12,8 @@
     transition in game end
     transition out game end
   Dark Mode
+  enter -> starts typing test
+
   Be creative!
 */
 
@@ -41,13 +43,11 @@ async function newGame() {
   let $htmlChar = document.querySelector('.char:not(.correct)');
   let targetChar = $htmlChar.textContent;
   let userTypeCount = 0;
-  let gameOver = false;
 
   document.addEventListener('keydown', ({ key }) => {
     if (key !== 'Backspace') {
       userTypeCount++;
     }
-    gameOver = false;
 
     if ($htmlChar) {
       // if $htmlChar exists then game is ongoing
@@ -86,7 +86,6 @@ const $gameOverDisplay = document.querySelector('.game-over');
 const $startScreen = document.querySelector('.start-screen')
 const $newGameBtn = document.querySelector('.new-game-btn');
 $newGameBtn.addEventListener('click', newGame)
-// TODO: enter -> starts typing test
 
 /* 
   event listener on button -> starts new game
