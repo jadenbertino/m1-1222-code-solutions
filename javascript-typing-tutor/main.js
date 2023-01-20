@@ -1,7 +1,7 @@
 /*
   TODO:
   ✅ Game start screen
-  Measure time from starting of first typing to finish time and calculate WPM (word per minute)
+  ✅ Measure time from starting of first typing to finish time and calculate WPM (word per minute)
   Come up with more set of sentence or words and randomly generate it
   Leaderboard with name and score
   Time-attack mode (sentence fades away)
