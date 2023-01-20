@@ -18,7 +18,7 @@
 */
 
 async function generateSentence(length) {
-  $sentenceBox.className = 'sentence'
+  $sentenceBox.classList.remove('hidden')
   $sentenceBox.innerHTML = '<img class="sentence-loading-img" src="./loading.gif"/>';
   const sentence = await fetch(`https://random-word-api.herokuapp.com/word?number=${length}`).then(data => data.json())
   const chars = sentence.join(' ').split('')
