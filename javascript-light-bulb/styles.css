@@ -1,0 +1,49 @@
+/*
+Light Mode Colors
+- FAEA84 = yellow bulb
+- FEF9F1 = white background
+
+Dark Mode Colors
+- 252525 = dark bulb
+- 111 = dark background
+- 0C0C0C = dark box shadow
+*/
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: sans-serif;
+}
+
+.background {
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #FEF9F1;
+  transition: all 250ms ease;
+}
+
+.dark .background {
+  background-color: #111;
+}
+
+.light-bulb {
+  width: 300px;
+  height: 300px;
+  border-radius: 50%;
+  border: none;
+  cursor: pointer;
+  background-color: #FAEA84;
+  box-shadow: 0 -5px 20px 10px #FEF4CB;
+  transition: all 250ms ease;
+}
+
+.dark .light-bulb {
+  background-color: #252525;
+  box-shadow: 0 -10px 5px 10px #0C0C0C;
+}
