@@ -64,13 +64,13 @@ async function newGame() {
           targetChar = $htmlChar.textContent;
         } 
 
-        else if (!$htmlChar && !$gameOverDisplay.classList.contains('game-over-active')) { 
+        else if (!$htmlChar && $gameOverDisplay.className !== '.game-over') { 
           // finished all letters, game is done
           const typingAccuracy = Math.floor(chars.length / userTypeCount * 100)
           const typingTimeInMinutes = (window.performance.now() - startTime) / 60000 // 60000 ms per minute
           const wpm = Math.floor(sentence.length / typingTimeInMinutes);
           $gameOverDisplay.innerHTML = `Congrats, you win! 🎉<br />You're typing accuracy was ${typingAccuracy}%<br />You typed at ${wpm} words per minute.`;
-          $gameOverDisplay.className = 'game-over game-over-active';
+          $gameOverDisplay.className = 'game-over';
           $newGameBtn.textContent = 'Play Again?';
           $newGameBtn.classList.remove('hidden');
         }
