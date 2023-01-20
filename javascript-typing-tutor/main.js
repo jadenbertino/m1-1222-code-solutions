@@ -34,7 +34,7 @@ async function newGame() {
   $gameOverDisplay.classList.remove('game-over-active')
   $newGameBtn.classList.add('hidden');
   $gameOverDisplay.textContent = '';
-  const { chars, sentence } = await generateSentence(5)
+  const { chars, sentence } = await generateSentence(2)
   const startTime = window.performance.now();
 
   // listen for keypress -> respond to correct & wrong keypress
@@ -50,29 +50,31 @@ async function newGame() {
     gameOver = false;
 
     if ($htmlChar) {
-      if (key === targetChar) { // correct key
+      // if $htmlChar exists then game is ongoing
+      if (key !== targetChar) { 
+        $htmlChar.className = 'char active incorrect';
+      } else { 
+        // hit the correct char
         $htmlChar.className = 'char correct';
         $htmlChar = document.querySelector('.char:not(.correct)');
+
         if ($htmlChar) {
+          // more letters to go
           $htmlChar.className = 'char active';
           targetChar = $htmlChar.textContent;
-        } else { // finished all letters
-          gameOver = true;
-        }
-      } else if (key !== targetChar) { // wrong key
-        $htmlChar.className = 'char active incorrect';
-      }
-    }
+        } 
 
-    // game over
-    if (gameOver && !$gameOverDisplay.classList.contains('game-over-active')) {
-      const typingAccuracy = Math.floor(chars.length / userTypeCount * 100)
-      const typingTime = Math.floor(window.performance.now() - startTime) / 1000
-      const wpm = Math.floor((60 / typingTime) * sentence.length)
-      $gameOverDisplay.innerHTML = `Congrats, you win! 🎉<br />You're typing accuracy was ${typingAccuracy}%<br />You typed at ${wpm} words per minute.`;
-      $gameOverDisplay.className = 'game-over game-over-active';
-      $newGameBtn.textContent = 'Play Again?';
-      $newGameBtn.classList.remove('hidden');
+        else if (!$htmlChar && !$gameOverDisplay.classList.contains('game-over-active')) { 
+          // finished all letters, game is done
+          const typingAccuracy = Math.floor(chars.length / userTypeCount * 100)
+          const typingTimeInMinutes = (window.performance.now() - startTime) / 60000 // 60000 ms per minute
+          const wpm = Math.floor(sentence.length / typingTimeInMinutes);
+          $gameOverDisplay.innerHTML = `Congrats, you win! 🎉<br />You're typing accuracy was ${typingAccuracy}%<br />You typed at ${wpm} words per minute.`;
+          $gameOverDisplay.className = 'game-over game-over-active';
+          $newGameBtn.textContent = 'Play Again?';
+          $newGameBtn.classList.remove('hidden');
+        }
+      }
     }
   });
 }
@@ -84,6 +86,7 @@ const $gameOverDisplay = document.querySelector('.game-over');
 const $startScreen = document.querySelector('.start-screen')
 const $newGameBtn = document.querySelector('.new-game-btn');
 $newGameBtn.addEventListener('click', newGame)
+// TODO: enter -> starts typing test
 
 /* 
   event listener on button -> starts new game
