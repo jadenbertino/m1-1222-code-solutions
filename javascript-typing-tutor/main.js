@@ -10,7 +10,7 @@
     transition in game end
     transition out game end
   Dark Mode
-  enter -> starts typing test
+  ✅ enter -> starts typing test
   Be creative!
 */
 
