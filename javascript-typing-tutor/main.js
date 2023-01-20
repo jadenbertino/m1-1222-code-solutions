@@ -1,5 +1,6 @@
 function newGame() {
   // Game Setup
+  $gameOverDisplay.classList.remove('game-over-active')
   $newGameBtn.classList.add('hidden');
   $gameOverDisplay.textContent = '';
   const sentence = "grumpy wizards make toxic brew";
@@ -18,22 +19,29 @@ function newGame() {
   let $htmlChar = document.querySelector('.char');
   let targetChar = $htmlChar.textContent;
   let userTypeCount = 0;
+  let gameOver = false;
 
   document.addEventListener('keydown', ({ key }) => {
     userTypeCount++;
-    if (key === targetChar && $htmlChar) {
-      $htmlChar.className = 'char correct';
-      $htmlChar = document.querySelector('.char:not(.correct)');
-      if ($htmlChar) {
-        $htmlChar.className = 'char active';
-        targetChar = $htmlChar.textContent;
+    gameOver = false;
+    if ($htmlChar) {
+      if (key === targetChar) { // correct key
+        $htmlChar.className = 'char correct';
+        $htmlChar = document.querySelector('.char:not(.correct)');
+        if ($htmlChar) {
+          $htmlChar.className = 'char active';
+          targetChar = $htmlChar.textContent;
+        } else { // finished all letters
+          gameOver = true;
+        }
+      } else if (key !== targetChar) { // wrong key
+        $htmlChar.className = 'char active incorrect';
       }
-    } else if (key !== targetChar && $htmlChar) {
-      $htmlChar.className = 'char active incorrect';
     }
+
     // game over
     if (
-      !$htmlChar &&
+      gameOver &&
       $gameOverDisplay.className !== 'game-over game-over-active'
     ) {
       $gameOverDisplay.textContent = `Congrats, you win! You're typing accuracy was ${Math.floor(
