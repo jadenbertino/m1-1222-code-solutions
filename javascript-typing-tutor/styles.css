@@ -10,12 +10,20 @@ body {
   text-align: center;
 }
 
+.hidden {
+  display: none;
+}
+
 .container {
   min-height: 100vh;
   display: flex;
   align-items: center;
   justify-content: center;
   flex-direction: column;
+}
+
+.sentence-loading-img {
+  max-width: 80px;
 }
 
 .active {
@@ -36,10 +44,6 @@ body {
   margin-top: 50px;
 }
 
-.game-over.hidden {
-  display: none;
-}
-
 .new-game-btn {
   padding: 12px 30px;
   font-size: 16px;
@@ -58,14 +62,6 @@ body {
 
 .new-game-btn:active {
   transform: translateY(4px);
-}
-
-.new-game-btn.hidden {
-  display: none;
-}
-
-.start-screen.hidden {
-  display: none;
 }
 
 .start-screen h1 {

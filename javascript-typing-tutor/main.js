@@ -18,6 +18,8 @@
 */
 
 async function generateSentence(length) {
+  $sentenceBox.className = 'sentence'
+  $sentenceBox.innerHTML = '<img class="sentence-loading-img" src="./loading.gif"/>';
   const sentence = await fetch(`https://random-word-api.herokuapp.com/word?number=${length}`).then(data => data.json())
   const chars = sentence.join(' ').split('')
   const displayHtml = chars.map((char, i) => {
@@ -29,12 +31,11 @@ async function generateSentence(length) {
 }
 
 async function newGame() {
-  await new Promise(r => setTimeout(r, 250)); // 250ms delay to allow for button animation 
-  // Game Setup
   console.log('new game')
-  $startScreen.classList.add('hidden')
-  $gameOverDisplay.classList.remove('game-over-active')
-  $newGameBtn.classList.add('hidden');
+  await new Promise(r => setTimeout(r, 250)); // 250ms delay to allow for button animation 
+
+  // Game Setup
+  [$startScreen, $newGameBtn, $gameOverDisplay].forEach(e => e.classList.add('hidden'));
   $gameOverDisplay.textContent = '';
   const { chars, sentence } = await generateSentence(2)
   const startTime = window.performance.now();
@@ -69,8 +70,9 @@ async function newGame() {
           const typingAccuracy = Math.floor(chars.length / userTypeCount * 100)
           const typingTimeInMinutes = (window.performance.now() - startTime) / 60000 // 60000 ms per minute
           const wpm = Math.floor(sentence.length / typingTimeInMinutes);
-          $gameOverDisplay.innerHTML = `Congrats, you win! 🎉<br />You're typing accuracy was ${typingAccuracy}%<br />You typed at ${wpm} words per minute.`;
+          $sentenceBox.classList.add('hidden')
           $gameOverDisplay.className = 'game-over';
+          $gameOverDisplay.innerHTML = `Congrats, you win! 🎉<br />You're typing accuracy was ${typingAccuracy}%<br />You typed at ${wpm} words per minute.`;
           $newGameBtn.textContent = 'Play Again?';
           $newGameBtn.classList.remove('hidden');
         }
