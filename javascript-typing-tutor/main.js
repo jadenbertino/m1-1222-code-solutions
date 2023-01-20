@@ -2,24 +2,37 @@
   TODO:
   ✅ Game start screen
   ✅ Measure time from starting of first typing to finish time and calculate WPM (word per minute)
-  Come up with more set of sentence or words and randomly generate it
+  ✅ Come up with more set of sentence or words and randomly generate it
   Leaderboard with name and score
   Time-attack mode (sentence fades away)
+  hide sentence upon game end
+  transition
+    transition out game start
+    transition in sentence
+    transition in game end
+    transition out game end
+  Dark Mode
   Be creative!
 */
-function newGame() {
+
+async function generateSentence(length) {
+  const sentence = await fetch(`https://random-word-api.herokuapp.com/word?number=${length}`).then(data => data.json())
+  const chars = sentence.join(' ').split('')
+  const displayHtml = chars.map((char, i) => {
+    if (i) { return `<span class="char">${char}</span>` }
+    return `<span class="char active">${char}</span>`; // first char should have active class
+  }).join('');
+  $sentenceBox.innerHTML = displayHtml;
+  return { chars, sentence }
+}
+
+async function newGame() {
   // Game Setup
   $startScreen.classList.add('hidden')
   $gameOverDisplay.classList.remove('game-over-active')
   $newGameBtn.classList.add('hidden');
   $gameOverDisplay.textContent = '';
-  const sentence = 'yo' // "grumpy wizards make toxic brew";
-  const chars = sentence.split('');
-  const display = chars.map((char, i) => {
-    if (i) { return `<span class="char">${char}</span>` }
-    return `<span class="char active">${char}</span>`; // first char should have active class
-  }).join('');
-  $sentenceBox.innerHTML = display;
+  const { chars, sentence } = await generateSentence(5)
   const startTime = window.performance.now();
 
   // listen for keypress -> respond to correct & wrong keypress
@@ -33,6 +46,7 @@ function newGame() {
       userTypeCount++;
     }
     gameOver = false;
+
     if ($htmlChar) {
       if (key === targetChar) { // correct key
         $htmlChar.className = 'char correct';
@@ -68,6 +82,7 @@ const $gameOverDisplay = document.querySelector('.game-over');
 const $startScreen = document.querySelector('.start-screen')
 const $newGameBtn = document.querySelector('.new-game-btn');
 $newGameBtn.addEventListener('click', newGame)
+
 /* 
   event listener on button -> starts new game
   hide button
@@ -88,3 +103,11 @@ $newGameBtn.addEventListener('click', newGame)
   incorrect key
     activeHtmlChar -> remove pending class, add 'wrong' class
 */
+
+/*
+  scrape dictionary, story in array
+  pick 20-30 random words
+    sort array by Math.random() - 0.5
+    index first 20- 30
+  set sentence to that array of words
+*/ 
