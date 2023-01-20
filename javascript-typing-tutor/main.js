@@ -27,7 +27,9 @@ async function generateSentence(length) {
 }
 
 async function newGame() {
+  await new Promise(r => setTimeout(r, 250)); // 250ms delay to allow for button animation 
   // Game Setup
+  console.log('new game')
   $startScreen.classList.add('hidden')
   $gameOverDisplay.classList.remove('game-over-active')
   $newGameBtn.classList.add('hidden');
