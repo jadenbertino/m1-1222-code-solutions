@@ -101,6 +101,11 @@ $newGameBtn.addEventListener('click', newGame)
 document.addEventListener('keydown', ({key}) => {
   if (key === 'Enter' && $sentenceBox.className !== 'sentence') newGame()
 })
+
+
+// Dark mode
+const $darkModeBtn = document.querySelector('.dark-mode-btn')
+$darkModeBtn.addEventListener('click', () => document.body.classList.toggle('dark'))
 /* 
   event listener on button -> starts new game
   hide button

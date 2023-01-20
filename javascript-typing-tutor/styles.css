@@ -25,7 +25,7 @@ body {
 }
 
 .sentence-loading-img {
-  max-width: 80px;
+  max-width: 50px;
 }
 
 .active {
@@ -38,8 +38,10 @@ body {
 }
 
 .incorrect {
-  color: #fd2a2a;
-  border-color: #fd2a2a;
+  color: #D33F49;
+  border-color: #D33F49;
+  /* color: #fd2a2a;
+  border-color: #fd2a2a; */
 }
 
 .game-over {
@@ -50,7 +52,8 @@ body {
   padding: 12px 30px;
   font-size: 16px;
   border: none;
-  background-color: #04F06A;
+  background-color: #3DA35D;
+  color: #fff;
   border-radius: 8px;
   cursor: pointer;
   box-shadow: 0 5px 10px 0 rgba(0, 0, 0, 0.1);
@@ -75,6 +78,23 @@ body {
   max-width: 400px;
 }
 
+.dark-mode-btn {
+  font-size: 32px;
+  position: absolute;
+  right: 50px;
+  top: 50px;
+  cursor: pointer;
+  transition: transform 250ms ease;
+}
+
+.dark-mode-btn:hover {
+  transform: scale(1.1);
+}
+
+.dark-mode-btn:active {
+  transform: scale(0.9);
+}
+
 /*
   
     DARK MODE
@@ -82,25 +102,21 @@ body {
 */
 
 .dark,
-.dark button,
+.active,
+.correct,
+.container,
+.incorrect {
+  transition: color 500ms ease;
+  transition: background-color 500ms ease;
+}
+
+.dark,
 .dark .active {
   color: #F5F3ED;
   border-color: #F5F3ED;
-}
-
-.dark button {
-  background-color: #3DA35D;
-}
-
-.dark .correct {
-  color: #3DA35D;
 }
 
 .dark .container {
   background-color:#1C1C1C;
 }
 
-.dark .incorrect {
-  color: #D33F49;
-  border-color: #D33F49;
-}
