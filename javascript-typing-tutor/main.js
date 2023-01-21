@@ -6,6 +6,7 @@
   ✅ Leaderboard with name and score
   more detailed start screen -- animate 'terrific typing tutor' as if someone was typing it
   transition
+    ✅ fade out start screen & game over
     transition out game start
     transition in sentence
     transition in game end
@@ -28,6 +29,11 @@
     change class
 */
 
+const $sentenceBox = document.querySelector('.sentence');
+const $gameOverDisplay = document.querySelector('.game-over');
+const $startScreen = document.querySelector('.start-screen')
+const $newGameBtn = document.querySelector('.new-game-btn');
+const $btnsWrapper = document.querySelector('.buttons-wrapper')
 
 async function generateSentence(length) {
   $sentenceBox.classList.remove('hidden')
@@ -42,15 +48,21 @@ async function generateSentence(length) {
   return { chars, sentence }
 }
 
+function delay(time) {
+  return new Promise(r => setTimeout(r, time))
+}
+
 async function newGame() {
-  console.log('new game')
-  await new Promise(r => setTimeout(r, 250)); // 250ms delay to allow for button animation 
+  $startScreen.classList.add('fade-out')
+  $btnsWrapper.classList.add('fade-out')
+  $gameOverDisplay.classList.add('fade-out')
+  await delay(300); // 250ms delay to allow for animations 
 
   // Game Setup
   [$startScreen, $btnsWrapper, $gameOverDisplay, $scoreboard].forEach(e => e.classList.add('hidden'));
   $gameOverDisplay.textContent = '';
   $scoreboardBtn.textContent = 'Show Scoreboard'
-  const { chars, sentence } = await generateSentence(2)
+  const { chars, sentence } = await generateSentence(1)
   let startTime; // start timer on first keypress
 
   // listen for keypress -> respond to correct & wrong keypress
@@ -99,7 +111,7 @@ async function newGame() {
           $gameOverDisplay.className = 'game-over';
           $gameOverDisplay.innerHTML = `Congrats, you win! 🎉<br />You're typing accuracy was ${typingAccuracy}%<br />You typed at ${wpm} words per minute.`;
           $newGameBtn.textContent = 'Play Again?';
-          $btnsWrapper.classList.remove('hidden');
+          $btnsWrapper.classList.remove('hidden', 'fade-out');
         }
       }
     }
@@ -109,11 +121,7 @@ async function newGame() {
 
 
 // Basic DOM + start game event listener on button
-const $sentenceBox = document.querySelector('.sentence');
-const $gameOverDisplay = document.querySelector('.game-over');
-const $startScreen = document.querySelector('.start-screen')
-const $newGameBtn = document.querySelector('.new-game-btn');
-const $btnsWrapper = document.querySelector('.buttons-wrapper')
+
 $newGameBtn.addEventListener('click', newGame)
 document.addEventListener('keydown', ({key}) => {
   if (key === 'Enter' && $sentenceBox.className !== 'sentence') newGame()
@@ -159,11 +167,19 @@ function displayScoreboard() {
     $scoreboardBtn.textContent = "Hide Scoreboard"
   } else {
     $scoreboardBtn.textContent = "Show Scoreboard"
-    $startScreen.classList.remove('hidden')
+    $startScreen.classList.remove('hidden', 'fade-out')
   }
 }
 
 $scoreboardBtn.addEventListener('click', displayScoreboard)
+
+/*
+  fade out
+*/
+const $fadeOutBtn = document.querySelector('.fade-out-btn')
+$fadeOutBtn.addEventListener('click', () => {
+  $startScreen.classList.toggle('fade-out')
+})
 
 /*
   scoreboard visible = 'hide scoreboard'

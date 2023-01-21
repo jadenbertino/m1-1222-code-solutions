@@ -24,6 +24,39 @@ body {
   flex-direction: column;
 }
 
+/*
+
+    TRANSITIONS
+
+*/
+
+.fade-out {
+  opacity: 0 !important;
+  transition: opacity 300ms ease;
+}
+
+.fade-in {
+  opacity: 1 !important;
+}
+
+.start-screen,
+.buttons-wrapper,
+.game-over {
+  transition: all 300ms ease;
+}
+
+.start-screen.fade-out,
+.buttons-wrapper.fade-out,
+.game-over.fade-out {
+  transform: translateY(-10px);
+}
+
+/*
+
+    MAIN STYLES
+
+*/
+
 .sentence-loading-img {
   max-width: 50px;
 }
