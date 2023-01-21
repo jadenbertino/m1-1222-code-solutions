@@ -4,12 +4,14 @@
   ✅ Measure time from starting of first typing to finish time and calculate WPM (word per minute)
   ✅ Come up with more set of sentence or words and randomly generate it
   👉 Leaderboard with name and score
+    reverse order of entries
   transition
     transition out game start
     transition in sentence
     transition in game end
     transition out game end
   more detailed start screen -- animate 'terrific typing tutor' as if someone was typing it
+  improve wpm time -- only start timer once user starts typing
   ✅ Dark Mode
   ✅ enter -> starts typing test
   Be creative!
@@ -26,6 +28,7 @@
     random wait
     change class
 */
+
 
 async function generateSentence(length) {
   $sentenceBox.classList.remove('hidden')
@@ -45,10 +48,11 @@ async function newGame() {
   await new Promise(r => setTimeout(r, 250)); // 250ms delay to allow for button animation 
 
   // Game Setup
-  [$startScreen, $newGameBtn, $gameOverDisplay].forEach(e => e.classList.add('hidden'));
+  [$startScreen, $btnsWrapper, $gameOverDisplay, $scoreboard].forEach(e => e.classList.add('hidden'));
   $gameOverDisplay.textContent = '';
+  $scoreboardBtn.textContent = 'Show Scoreboard'
   const { chars, sentence } = await generateSentence(2)
-  const startTime = window.performance.now();
+  let startTime; // start timer on first keypress
 
   // listen for keypress -> respond to correct & wrong keypress
   let $htmlChar = document.querySelector('.char:not(.correct)');
@@ -56,12 +60,19 @@ async function newGame() {
   let userTypeCount = 0;
 
   document.addEventListener('keydown', ({ key }) => {
+
+    // ignore backspace / enter keypress
     if (key !== 'Backspace' && key !== 'Enter' ) {
       userTypeCount++;
     }
 
+    // start wpm timer on first keypress
+    if (userTypeCount === 1) {
+      startTime = window.performance.now()
+    }
+
+    // if $htmlChar exists then game is ongoing. 
     if ($htmlChar) {
-      // if $htmlChar exists then game is ongoing
       if (key !== targetChar) { 
         $htmlChar.className = 'char active incorrect';
       } else { 
@@ -80,11 +91,16 @@ async function newGame() {
           const typingAccuracy = Math.floor(chars.length / userTypeCount * 100)
           const typingTimeInMinutes = (window.performance.now() - startTime) / 60000 // 60000 ms per minute
           const wpm = Math.floor(sentence.length / typingTimeInMinutes);
+          scores.unshift({ 
+            date: new Date(),
+            accuracy: typingAccuracy, 
+            wpm: wpm})
+          // display
           $sentenceBox.classList.add('hidden')
           $gameOverDisplay.className = 'game-over';
           $gameOverDisplay.innerHTML = `Congrats, you win! 🎉<br />You're typing accuracy was ${typingAccuracy}%<br />You typed at ${wpm} words per minute.`;
           $newGameBtn.textContent = 'Play Again?';
-          $newGameBtn.classList.remove('hidden');
+          $btnsWrapper.classList.remove('hidden');
         }
       }
     }
@@ -93,19 +109,67 @@ async function newGame() {
 
 
 
+// Basic DOM + start game event listener on button
 const $sentenceBox = document.querySelector('.sentence');
 const $gameOverDisplay = document.querySelector('.game-over');
 const $startScreen = document.querySelector('.start-screen')
 const $newGameBtn = document.querySelector('.new-game-btn');
+const $btnsWrapper = document.querySelector('.buttons-wrapper')
 $newGameBtn.addEventListener('click', newGame)
 document.addEventListener('keydown', ({key}) => {
   if (key === 'Enter' && $sentenceBox.className !== 'sentence') newGame()
 })
 
-
 // Dark mode
 const $darkModeBtn = document.querySelector('.dark-mode-btn')
 $darkModeBtn.addEventListener('click', () => document.body.classList.toggle('dark'))
+
+/*
+Scoreboard
+  leaderboard = empty array, global
+  game end
+    push { accuracy, wpm, time of finish } to array
+  button -> onclick -> show leaderboard via removing hidden class
+
+  leaderboard display
+    leaderboard container, flex, column, full width
+      entry, flex, space around
+        time of finish
+        wpm
+        accuracy
+*/
+const scores = []
+const $scoreboard = document.querySelector('.scoreboard')
+const $scoreboardEntries = document.querySelector('.scoreboard-entries')
+const $scoreboardBtn = document.querySelector('.scoreboard-btn')
+
+function displayScoreboard() {
+  $scoreboard.classList.toggle('hidden')
+  $gameOverDisplay.classList.add('hidden')
+  const scoreboardVisible = !$scoreboard.classList.contains('hidden')
+  if (scoreboardVisible) {
+    const scoreboardEntriesHtml = scores.map(({date, accuracy, wpm}) => (
+      `<div class='scoreboard-entry'>
+      <span>${date.toLocaleString()}</span>
+      <span>${accuracy}</span>
+      <span>${wpm}</span>
+      </div>`
+    )).slice(0,10).join('') // only display 10 most recent scores
+    $startScreen.classList.add('hidden')
+    $scoreboardEntries.innerHTML = scoreboardEntriesHtml
+    $scoreboardBtn.textContent = "Hide Scoreboard"
+  } else {
+    $scoreboardBtn.textContent = "Show Scoreboard"
+    $startScreen.classList.remove('hidden')
+  }
+}
+
+$scoreboardBtn.addEventListener('click', displayScoreboard)
+
+/*
+  scoreboard visible = 'hide scoreboard'
+  
+*/
 /* 
   event listener on button -> starts new game
   hide button

@@ -38,8 +38,8 @@ body {
 }
 
 .incorrect {
-  color: #D33F49;
-  border-color: #D33F49;
+  color: #D33F49 !important;
+  border-color: #D33F49 !important;
   /* color: #fd2a2a;
   border-color: #fd2a2a; */
 }
@@ -48,7 +48,7 @@ body {
   margin-top: 50px;
 }
 
-.new-game-btn {
+.btn {
   padding: 12px 30px;
   font-size: 16px;
   border: none;
@@ -61,11 +61,11 @@ body {
   transition: all 300ms ease;
 }
 
-.new-game-btn:hover {
+.btn:hover {
   transform: translateY(-4px);
 }
 
-.new-game-btn:active {
+.btn:active {
   transform: translateY(4px);
 }
 
@@ -95,6 +95,7 @@ body {
   transform: scale(0.9);
 }
 
+
 /*
   
     DARK MODE
@@ -120,3 +121,28 @@ body {
   background-color:#1C1C1C;
 }
 
+.scoreboard {
+  width: 1000px;
+  text-align: start;
+}
+
+.scoreboard-header {
+  margin-bottom: 12px;
+  font-weight: bold;
+}
+
+.scoreboard-header,
+.scoreboard-entry {
+  display: flex;
+  justify-content: space-between;
+}
+
+.scoreboard-header > *:first-child,
+.scoreboard-entry > *:first-child {
+  width: 50%;
+}
+
+.scoreboard-header > *:not(:first-child),
+.scoreboard-entry > *:not(:first-child) {
+  width: 25%;
+}

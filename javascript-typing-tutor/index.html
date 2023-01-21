@@ -13,17 +13,26 @@
   </head>
   <body class="dark">
     <main>
-      <div>
-      </div>
       <div class="container">
         <a class="dark-mode-btn fa-solid fa-circle-half-stroke fa-lg"></a>
         <div class="sentence hidden"></div>
-        <div class="game-over hidden"></div>
+        <div class="game-over"></div>
         <div class="start-screen">
           <h1>Terrific Typing Tutor</h1>
           <img src="./kermit-typing.gif" alt="" />
         </div>
-        <button class="new-game-btn">Start Game?</button>
+        <div class="scoreboard hidden">
+          <div class="scoreboard-header">
+            <p>Date</p>
+            <p>Accuracy</p>
+            <p>WPM</p>
+          </div>
+          <div class='scoreboard-entries'></div>
+        </div>
+        <div class="buttons-wrapper">
+          <button class="btn new-game-btn">Start Game?</button>
+          <button class="btn scoreboard-btn">Show Scoreboard</button>
+        </div>
       </div>
     </main>
   </body>
