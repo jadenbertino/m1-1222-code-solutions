@@ -3,15 +3,14 @@
   ✅ Game start screen
   ✅ Measure time from starting of first typing to finish time and calculate WPM (word per minute)
   ✅ Come up with more set of sentence or words and randomly generate it
-  👉 Leaderboard with name and score
-    reverse order of entries
+  ✅ Leaderboard with name and score
+  more detailed start screen -- animate 'terrific typing tutor' as if someone was typing it
   transition
     transition out game start
     transition in sentence
     transition in game end
     transition out game end
-  more detailed start screen -- animate 'terrific typing tutor' as if someone was typing it
-  improve wpm time -- only start timer once user starts typing
+  ✅ improve wpm time -- only start timer once user starts typing
   ✅ Dark Mode
   ✅ enter -> starts typing test
   Be creative!
