@@ -47,7 +47,7 @@ async function generateSentence(length) {
   // loading icon
   $sentenceBox.className = 'sentence fade-out'
   $sentenceBox.innerHTML = '<img class="sentence-loading-img" src="./loading.gif"/>';
-  await delay(0)
+  await delay(50)
   $sentenceBox.classList.remove('fade-out') // fades in
   await delay(300) // ensure loading icon is visible at least for a small amount of time
 
@@ -72,7 +72,9 @@ function delay(time) {
 async function newGame() {
 
   // Game Setup
-  [$startScreen, $newGameBtn, $scoreboardBtn, $gameOverDisplay].forEach(e => e.classList.add('fade-out'))
+  [$startScreen, $newGameBtn, $scoreboardBtn, $gameOverDisplay, $scoreboard].forEach(e => {
+    console.log(`updated ${e}`)
+    e.classList.add('fade-out')})
   await delay(400); // wait for fade out animation to complete 
   [$startScreen, $newGameBtn, $scoreboardBtn, $gameOverDisplay, $scoreboard].forEach(e => e.classList.add('hidden'));
   $scoreboardBtn.textContent = 'Show Scoreboard' // toggles between "show" and "hide" text
@@ -84,6 +86,7 @@ async function newGame() {
   
   // listen for keypress -> respond to correct & wrong keypress
   document.addEventListener('keydown', async ({ key }) => {
+    key = key.toLowerCase()
 
     // ignore backspace / enter keypress
     if (key !== 'Backspace' && key !== 'Enter' ) {
@@ -121,15 +124,23 @@ async function newGame() {
             wpm: wpm})
           $gameOverDisplay.innerHTML = `Congrats, you win! 🎉<br />You're typing accuracy was ${typingAccuracy}%<br />You typed at ${wpm} words per minute.`;
           $newGameBtn.textContent = 'Play Again';
-          // display
-          $sentenceBox.classList.remove('fade-in')
-          $gameOverDisplay.className = 'game-over fade-out'
-          await delay(500)
+
+          // fade out sentence
+          $sentenceBox.classList.add('fade-out')
+          await delay(400)
           $sentenceBox.classList.add('hidden')
-          await delay(0) // need to remove fade-out on next event loop to get transition
+
+          // fade in game over & buttons
+          $gameOverDisplay.classList.remove('hidden')
+          $newGameBtn.classList.remove('hidden')
+          $scoreboardBtn.classList.remove('hidden')
+          await delay(50)
           $gameOverDisplay.classList.remove('fade-out')
-          $newGameBtn.classList.remove('hidden', 'fade-out');
-          $scoreboardBtn.classList.remove('hidden', 'fade-out');
+          $newGameBtn.classList.remove('fade-out')
+          $scoreboardBtn.classList.remove('fade-out')
+          
+          // prevent this from happening on every keypress
+          $gameOverDisplay.classList.add('game-over-active')
         }
       }
     }

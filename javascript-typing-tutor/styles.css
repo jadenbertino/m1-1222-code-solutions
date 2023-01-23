@@ -47,11 +47,10 @@ body {
 }
 
 .start-screen.fade-out,
-.new-game-btn.fade-out,
-.scoreboard-btn.fade-out,
+.btn.fade-out,
 .game-over.fade-out,
 .sentence.fade-out {
-  transform: translateY(-10px);
+transform: translateY(-10px);
 }
 
 /*
