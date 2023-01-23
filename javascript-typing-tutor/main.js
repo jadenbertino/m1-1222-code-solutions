@@ -23,6 +23,7 @@
   clean up code 
     for each
     create fade out function
+  choose number of words
 */
 
 /*
@@ -49,7 +50,7 @@ const $scoreboardEntries = document.querySelector('.scoreboard-entries')
 async function generateSentence(length) {
   // loading icon
   $sentenceBox.innerHTML = '<img class="sentence-loading-img" src="./loading.gif"/>';
-  fadeIn($sentenceBox)
+  await fadeIn($sentenceBox)
   await delay(300) // ensure loading icon is visible at least for a small amount of time
 
   // generate sentence
@@ -72,36 +73,22 @@ function delay(time) {
   return new Promise(r => setTimeout(r, time))
 }
 
-async function fadeOut(elems) {
-  if (Array.isArray(elems)) {
-    elems.forEach(e => e.classList.add('fade-out'))
-    await delay(400)
-    elems.forEach(e => e.classList.add('hidden'))
-
-  } else {
-    elems.classList.add('fade-out')
-    await delay(400)
-    elems.classList.add('hidden')
-  }
+async function fadeOut(...elems) {
+  elems.forEach(e => e.classList.add('fade-out'))
+  await delay(400)
+  elems.forEach(e => e.classList.add('hidden'))
 }
 
-async function fadeIn(elems) {
-  if (Array.isArray(elems)) {
-    elems.forEach(e => e.classList.remove('hidden'))
-    await delay(50)
-    elems.forEach(e => e.classList.remove('fade-out'))
-  } else {
-    elems.classList.remove('hidden')
-    await delay(50)
-    elems.classList.remove('fade-out')
-  }
+async function fadeIn(...elems) {
+  elems.forEach(e => e.classList.remove('hidden'))
+  await delay(50)
+  elems.forEach(e => e.classList.remove('fade-out'))
 }
 
 async function newGame() {
 
   // Game Setup
-  await fadeOut([$startScreen, $newGameBtn, $sentenceBox, $scoreboardBtn, $gameOverDisplay, $scoreboard])
-  $scoreboardBtn.textContent = 'Show Scoreboard' // toggles between "show" and "hide" text
+  await fadeOut($startScreen, $newGameBtn, $sentenceBox, $scoreboardBtn, $gameOverDisplay, $scoreboard)
   const { chars, sentence } = await generateSentence(1)
   let startTime; // start timer on first keypress
   let $htmlChar = document.querySelector('.char:not(.correct)');
@@ -137,7 +124,7 @@ async function newGame() {
           targetChar = $htmlChar.textContent;
         } 
 
-        else if (!$htmlChar && $gameOverDisplay.className !== '.game-over') { // if visible then class will be 'game-over fade-in'
+        else if (!$htmlChar && $gameOverDisplay.className !== '.game-over') { // if visible then class will be 'game-over game-over-active'
           // finished all letters, game is done
           const typingAccuracy = Math.floor(chars.length / userTypeCount * 100)
           const typingTimeInMinutes = (window.performance.now() - startTime) / 60000 // 60000 ms per minute
@@ -148,22 +135,8 @@ async function newGame() {
             wpm: wpm})
           $gameOverDisplay.innerHTML = `Congrats, you win! 🎉<br />You're typing accuracy was ${typingAccuracy}%<br />You typed at ${wpm} words per minute.`;
           $newGameBtn.textContent = 'Play Again';
-
-          // fade out sentence
-          $sentenceBox.classList.add('fade-out')
-          await delay(400)
-          $sentenceBox.classList.add('hidden')
-
-          // fade in game over & buttons
-          $gameOverDisplay.classList.remove('hidden')
-          $newGameBtn.classList.remove('hidden')
-          $scoreboardBtn.classList.remove('hidden')
-          await delay(50)
-          $gameOverDisplay.classList.remove('fade-out')
-          $newGameBtn.classList.remove('fade-out')
-          $scoreboardBtn.classList.remove('fade-out')
-          
-          // prevent this from happening on every keypress
+          await fadeOut($sentenceBox)
+          await fadeIn($gameOverDisplay, $newGameBtn, $scoreboardBtn)
           $gameOverDisplay.classList.add('game-over-active')
         }
       }
@@ -224,6 +197,7 @@ async function displayScoreboard() {
     $scoreboard.classList.remove('fade-out')
 
   } else {
+    $scoreboardBtn.textContent = 'Show Scoreboard' // toggles between "show" and "hide" text
     // fade out scoreboard
     $scoreboard.classList.add('fade-out')
     await delay(400)
