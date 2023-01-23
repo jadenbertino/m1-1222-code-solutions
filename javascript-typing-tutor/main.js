@@ -49,19 +49,19 @@ const $scoreboardEntries = document.querySelector('.scoreboard-entries')
 async function generateSentence(length) {
   // loading icon
   $sentenceBox.innerHTML = '<img class="sentence-loading-img" src="./loading.gif"/>';
-  $sentenceBox.className = 'sentence fade-out'
-  await delay(50)
-  $sentenceBox.classList.remove('fade-out') // fades in
+  fadeIn($sentenceBox)
   await delay(300) // ensure loading icon is visible at least for a small amount of time
 
-  // sentence generation
+  // generate sentence
   const sentence = await fetch(`https://random-word-api.herokuapp.com/word?number=${length}`).then(data => data.json())
   const chars = sentence.join(' ').split('')
   const displayHtml = chars.map((char, i) => i ? `<span class="char">${char}</span>` : `<span class="char active">${char}</span>`).join('')
 
-  // sentence display
-  $sentenceBox.classList.add('fade-out') // fade loading icon out
+  // fade loading icon out upon sentence load
+  $sentenceBox.classList.add('fade-out') 
   await delay(400)
+
+  // fade sentence in 
   $sentenceBox.innerHTML = displayHtml;
   $sentenceBox.classList.remove('fade-out')
 
@@ -72,36 +72,35 @@ function delay(time) {
   return new Promise(r => setTimeout(r, time))
 }
 
-async function fadeOut(time, elems) {
+async function fadeOut(elems) {
   if (Array.isArray(elems)) {
     elems.forEach(e => e.classList.add('fade-out'))
-    await delay(time)
+    await delay(400)
     elems.forEach(e => e.classList.add('hidden'))
 
   } else {
     elems.classList.add('fade-out')
-    await delay(time)
+    await delay(400)
     elems.classList.add('hidden')
   }
 }
 
-async function fadeIn(time, elems) {
+async function fadeIn(elems) {
   if (Array.isArray(elems)) {
-    elems.forEach(e => e.classList.remove('fade-out'))
-    await delay(time)
     elems.forEach(e => e.classList.remove('hidden'))
-
+    await delay(50)
+    elems.forEach(e => e.classList.remove('fade-out'))
   } else {
-    elems.classList.remove('fade-out')
-    await delay(time)
     elems.classList.remove('hidden')
+    await delay(50)
+    elems.classList.remove('fade-out')
   }
 }
 
 async function newGame() {
 
   // Game Setup
-  await fadeOut(400, [$startScreen, $newGameBtn, $scoreboardBtn, $gameOverDisplay, $scoreboard])
+  await fadeOut([$startScreen, $newGameBtn, $sentenceBox, $scoreboardBtn, $gameOverDisplay, $scoreboard])
   $scoreboardBtn.textContent = 'Show Scoreboard' // toggles between "show" and "hide" text
   const { chars, sentence } = await generateSentence(1)
   let startTime; // start timer on first keypress
