@@ -72,12 +72,23 @@ function delay(time) {
   return new Promise(r => setTimeout(r, time))
 }
 
+async function fade(time, elems) {
+  if (Array.isArray(elems)) {
+    elems.forEach(e => e.classList.add('fade-out'))
+    await delay(time)
+    elems.forEach(e => e.classList.add('hidden'))
+
+  } else {
+    elems.classList.add('fade-out')
+    await delay(time)
+    elems.classList.add('hidden')
+  }
+}
+
 async function newGame() {
 
   // Game Setup
-  [$startScreen, $newGameBtn, $scoreboardBtn, $gameOverDisplay, $scoreboard].forEach(e => e.classList.add('fade-out'))
-  await delay(400); // wait for fade out animation to complete 
-  [$startScreen, $newGameBtn, $scoreboardBtn, $gameOverDisplay, $scoreboard].forEach(e => e.classList.add('hidden'));
+  await fade(400, [$startScreen, $newGameBtn, $scoreboardBtn, $gameOverDisplay, $scoreboard])
   $scoreboardBtn.textContent = 'Show Scoreboard' // toggles between "show" and "hide" text
   const { chars, sentence } = await generateSentence(1)
   let startTime; // start timer on first keypress
@@ -175,18 +186,6 @@ Scoreboard
         accuracy
 */
 const scores = []
-
-async function fadeOut(elems, time) {
-  elems.classList.remove('fade-out')
-  await delay(time)
-  elem.classList.remove('hidden')
-}
-
-async function fadeIn(elem, time) {
-  elem.classList.add('fade-out')
-  await delay(time)
-  elem.classList.add('hidden')
-}
 
 async function displayScoreboard() {
   const showScoreboard = $scoreboard.classList.contains('hidden')
