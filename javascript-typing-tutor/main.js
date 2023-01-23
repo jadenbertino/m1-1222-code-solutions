@@ -89,7 +89,7 @@ async function newGame() {
 
   // Game Setup
   await fadeOut($startScreen, $newGameBtn, $sentenceBox, $scoreboardBtn, $gameOverDisplay, $scoreboard)
-  const { chars, sentence } = await generateSentence(1)
+  const { chars, sentence } = await generateSentence(5)
   let startTime; // start timer on first keypress
   let $htmlChar = document.querySelector('.char:not(.correct)');
   let targetChar = $htmlChar.textContent;
@@ -146,8 +146,7 @@ async function newGame() {
 
 
 
-// Basic DOM + start game event listener on button
-
+// Start game on button click or hit enter
 $newGameBtn.addEventListener('click', newGame)
 document.addEventListener('keydown', ({key}) => {
   if (key === 'Enter' && $sentenceBox.className !== 'sentence') newGame()
@@ -156,32 +155,13 @@ document.addEventListener('keydown', ({key}) => {
 // Dark mode
 $darkModeBtn.addEventListener('click', () => document.body.classList.toggle('dark'))
 
-/*
-Scoreboard
-  leaderboard = empty array, global
-  game end
-    push { accuracy, wpm, time of finish } to array
-  button -> onclick -> show leaderboard via removing hidden class
-
-  leaderboard display
-    leaderboard container, flex, column, full width
-      entry, flex, space around
-        time of finish
-        wpm
-        accuracy
-*/
+// Scoreboard
 const scores = []
-
 async function displayScoreboard() {
   const showScoreboard = $scoreboard.classList.contains('hidden')
 
   if (showScoreboard) {
-    // fade out game over OR startscreen
-    $gameOverDisplay.classList.add('fade-out')
-    $startScreen.classList.add('fade-out')
-    await delay(400)
-    $gameOverDisplay.classList.add('hidden')
-    $startScreen.classList.add('hidden')
+    await fadeOut($gameOverDisplay, $startScreen)
 
     // fade in scoreboard
     $scoreboardEntries.innerHTML = scores.map(({date, accuracy, wpm}) => (
@@ -192,52 +172,16 @@ async function displayScoreboard() {
       </div>`
     )).slice(0,10).join('') // only display 10 most recent scores
     $scoreboardBtn.textContent = "Hide Scoreboard"
-    $scoreboard.classList.remove('hidden')
-    await delay(400)
-    $scoreboard.classList.remove('fade-out')
+    await fadeIn($scoreboard)
 
   } else {
     $scoreboardBtn.textContent = 'Show Scoreboard' // toggles between "show" and "hide" text
-    // fade out scoreboard
-    $scoreboard.classList.add('fade-out')
-    await delay(400)
-    $scoreboard.classList.add('hidden')
+    await fadeOut($scoreboard)
 
     // display start screen
     $scoreboardBtn.textContent = "Show Scoreboard"
-    $startScreen.classList.remove('hidden')
-    await delay(50)
-    $startScreen.classList.remove('fade-out')
+    await fadeIn($startScreen)
   }
 }
 
 $scoreboardBtn.addEventListener('click', displayScoreboard)
-
-/* 
-  event listener on button -> starts new game
-  hide button
-  do all stuff above
-    game over -> return to end function
-*/
-
-// New Game
-
-/*
-  get activeHtmlChar via .char & (.pending OR .wrong)
-  get currentChar via chars[0]
-
-  if correct key
-    remove from chars
-    activeHtmlChar -> remove pending class, add 'correct' class
-    set new activeHtmlChar & currentChar
-  incorrect key
-    activeHtmlChar -> remove pending class, add 'wrong' class
-*/
-
-/*
-  scrape dictionary, story in array
-  pick 20-30 random words
-    sort array by Math.random() - 0.5
-    index first 20- 30
-  set sentence to that array of words
-*/ 
