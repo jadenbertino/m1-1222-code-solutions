@@ -46,12 +46,17 @@ const $scoreboardEntries = document.querySelector('.scoreboard-entries')
 async function generateSentence(length) {
   $sentenceBox.classList.remove('hidden')
   $sentenceBox.innerHTML = '<img class="sentence-loading-img" src="./loading.gif"/>';
+  await delay(0)
+  $sentenceBox.classList.add('fade-in')
+  await delay(500)
   const sentence = await fetch(`https://random-word-api.herokuapp.com/word?number=${length}`).then(data => data.json())
   const chars = sentence.join(' ').split('')
   const displayHtml = chars.map((char, i) => {
     if (i) { return `<span class="char">${char}</span>` }
     return `<span class="char active">${char}</span>`; // first char should have active class
   }).join('');
+  $sentenceBox.classList.remove('fade-in')
+  await delay(500)
   $sentenceBox.innerHTML = displayHtml;
   $sentenceBox.classList.add('fade-in')
   return { chars, sentence }
@@ -70,8 +75,7 @@ async function newGame() {
 
   // Game Setup
   [$startScreen, $newGameBtn, $scoreboardBtn, $gameOverDisplay, $scoreboard].forEach(e => e.classList.add('hidden'));
-  $gameOverDisplay.textContent = '';
-  $scoreboardBtn.textContent = 'Show Scoreboard'
+  $scoreboardBtn.textContent = 'Show Scoreboard' // toggles between "show" and "hide" text
   const { chars, sentence } = await generateSentence(1)
   let startTime; // start timer on first keypress
 
@@ -92,7 +96,7 @@ async function newGame() {
       startTime = window.performance.now()
     }
 
-    // if $htmlChar exists then game is ongoing. 
+    // if $htmlChar exists then game is ongoing
     if ($htmlChar) {
       if (key !== targetChar) { 
         $htmlChar.className = 'char active incorrect';
@@ -107,8 +111,7 @@ async function newGame() {
           targetChar = $htmlChar.textContent;
         } 
 
-        else if (!$htmlChar && $gameOverDisplay.className !== '.game-over') { 
-
+        else if (!$htmlChar && $gameOverDisplay.className !== '.game-over') { // if visible then class will be 'game-over fade-in'
           // finished all letters, game is done
           const typingAccuracy = Math.floor(chars.length / userTypeCount * 100)
           const typingTimeInMinutes = (window.performance.now() - startTime) / 60000 // 60000 ms per minute
@@ -119,10 +122,11 @@ async function newGame() {
             wpm: wpm})
           $gameOverDisplay.innerHTML = `Congrats, you win! 🎉<br />You're typing accuracy was ${typingAccuracy}%<br />You typed at ${wpm} words per minute.`;
           $newGameBtn.textContent = 'Play Again';
-
           // display
-          $sentenceBox.classList.add('hidden')
+          $sentenceBox.classList.remove('fade-in')
           $gameOverDisplay.className = 'game-over fade-out'
+          await delay(500)
+          $sentenceBox.classList.add('hidden')
           await delay(0) // need to remove fade-out on next event loop to get transition
           $gameOverDisplay.classList.remove('fade-out')
           $newGameBtn.classList.remove('hidden', 'fade-out');

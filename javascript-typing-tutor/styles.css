@@ -52,14 +52,25 @@ body {
   transform: translateY(-10px);
 }
 
+.sentence.fade-in {
+  transform: translateY(0);
+}
+
 /*
 
     MAIN STYLES
 
 */
 
+.sentence {
+  opacity: 0;
+  transition: all 500ms ease;
+  transform: translateY(-10px)
+}
+
 .sentence-loading-img {
   max-width: 50px;
+
 }
 
 .active {
