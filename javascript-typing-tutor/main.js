@@ -48,8 +48,8 @@ const $scoreboardEntries = document.querySelector('.scoreboard-entries')
 
 async function generateSentence(length) {
   // loading icon
-  $sentenceBox.className = 'sentence fade-out'
   $sentenceBox.innerHTML = '<img class="sentence-loading-img" src="./loading.gif"/>';
+  $sentenceBox.className = 'sentence fade-out'
   await delay(50)
   $sentenceBox.classList.remove('fade-out') // fades in
   await delay(300) // ensure loading icon is visible at least for a small amount of time
@@ -72,7 +72,7 @@ function delay(time) {
   return new Promise(r => setTimeout(r, time))
 }
 
-async function fade(time, elems) {
+async function fadeOut(time, elems) {
   if (Array.isArray(elems)) {
     elems.forEach(e => e.classList.add('fade-out'))
     await delay(time)
@@ -85,10 +85,23 @@ async function fade(time, elems) {
   }
 }
 
+async function fadeIn(time, elems) {
+  if (Array.isArray(elems)) {
+    elems.forEach(e => e.classList.remove('fade-out'))
+    await delay(time)
+    elems.forEach(e => e.classList.remove('hidden'))
+
+  } else {
+    elems.classList.remove('fade-out')
+    await delay(time)
+    elems.classList.remove('hidden')
+  }
+}
+
 async function newGame() {
 
   // Game Setup
-  await fade(400, [$startScreen, $newGameBtn, $scoreboardBtn, $gameOverDisplay, $scoreboard])
+  await fadeOut(400, [$startScreen, $newGameBtn, $scoreboardBtn, $gameOverDisplay, $scoreboard])
   $scoreboardBtn.textContent = 'Show Scoreboard' // toggles between "show" and "hide" text
   const { chars, sentence } = await generateSentence(1)
   let startTime; // start timer on first keypress
