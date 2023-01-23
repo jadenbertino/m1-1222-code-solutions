@@ -1,43 +1,23 @@
 /*
   TODO:
+  choose number of words via input
+  more detailed start screen -- animate 'terrific typing tutor' as if someone was typing it
+  create fade out function
+  Be creative!
+  see monkeytype for more inspo
+  sort leaderboard by speed 
   ✅ Game start screen
   ✅ Measure time from starting of first typing to finish time and calculate WPM (word per minute)
   ✅ Come up with more set of sentence or words and randomly generate it
   ✅ Leaderboard with name and score
-  more detailed start screen -- animate 'terrific typing tutor' as if someone was typing it
-  transitions
-    ✅ fade out start screen & game over
-    fade in game over + buttons
-    fade in sentence
-    transition out game start
-    transition in sentence
-    transition in game end
-    transition out game end
-    scoreboard fade in out
-    start screen fade in (from scoreboard)
+  ✅ transitions
   ✅ improve wpm time -- only start timer once user starts typing
   ✅ Dark Mode
   ✅ enter -> starts typing test
-  Be creative!
-  see monkeytype for more inspo
-  clean up code 
-    for each
-    create fade out function
-  choose number of words
+  ✅ clean up code 
 */
 
-/*
-  animate start screen
-
-  create function (sentenceBox, key) that alters html
-
-  async function
-    for loop
-    random wait
-    change class
-*/
-
-// DOM``
+// DOM
 const $sentenceBox = document.querySelector('.sentence');
 const $gameOverDisplay = document.querySelector('.game-over');
 const $startScreen = document.querySelector('.start-screen')
@@ -146,7 +126,7 @@ async function newGame() {
 
 
 
-// Start game on button click or hit enter
+// Start game on BUTTON CLICK or ENTER KEYPRESS
 $newGameBtn.addEventListener('click', newGame)
 document.addEventListener('keydown', ({key}) => {
   if (key === 'Enter' && $sentenceBox.className !== 'sentence') newGame()
