@@ -44,21 +44,24 @@ const $scoreboard = document.querySelector('.scoreboard')
 const $scoreboardEntries = document.querySelector('.scoreboard-entries')
 
 async function generateSentence(length) {
-  $sentenceBox.classList.remove('hidden')
+  // loading icon
+  $sentenceBox.className = 'sentence fade-out'
   $sentenceBox.innerHTML = '<img class="sentence-loading-img" src="./loading.gif"/>';
   await delay(0)
-  $sentenceBox.classList.add('fade-in')
-  await delay(500)
+  $sentenceBox.classList.remove('fade-out') // fades in
+  await delay(300) // ensure loading icon is visible at least for a small amount of time
+
+  // sentence generation
   const sentence = await fetch(`https://random-word-api.herokuapp.com/word?number=${length}`).then(data => data.json())
   const chars = sentence.join(' ').split('')
-  const displayHtml = chars.map((char, i) => {
-    if (i) { return `<span class="char">${char}</span>` }
-    return `<span class="char active">${char}</span>`; // first char should have active class
-  }).join('');
-  $sentenceBox.classList.remove('fade-in')
-  await delay(500)
+  const displayHtml = chars.map((char, i) => i ? `<span class="char">${char}</span>` : `<span class="char active">${char}</span>`).join('')
+
+  // sentence display
+  $sentenceBox.classList.add('fade-out') // fade loading icon out
+  await delay(400)
   $sentenceBox.innerHTML = displayHtml;
-  $sentenceBox.classList.add('fade-in')
+  $sentenceBox.classList.remove('fade-out')
+
   return { chars, sentence }
 }
 
@@ -67,23 +70,19 @@ function delay(time) {
 }
 
 async function newGame() {
-  $startScreen.classList.add('fade-out')
-  $newGameBtn.classList.add('fade-out')
-  $scoreboardBtn.classList.add('fade-out')
-  $gameOverDisplay.classList.add('fade-out')
-  await delay(300); // 250ms delay to allow for animations 
 
   // Game Setup
+  [$startScreen, $newGameBtn, $scoreboardBtn, $gameOverDisplay].forEach(e => e.classList.add('fade-out'))
+  await delay(400); // wait for fade out animation to complete 
   [$startScreen, $newGameBtn, $scoreboardBtn, $gameOverDisplay, $scoreboard].forEach(e => e.classList.add('hidden'));
   $scoreboardBtn.textContent = 'Show Scoreboard' // toggles between "show" and "hide" text
   const { chars, sentence } = await generateSentence(1)
   let startTime; // start timer on first keypress
-
-  // listen for keypress -> respond to correct & wrong keypress
   let $htmlChar = document.querySelector('.char:not(.correct)');
   let targetChar = $htmlChar.textContent;
   let userTypeCount = 0;
-
+  
+  // listen for keypress -> respond to correct & wrong keypress
   document.addEventListener('keydown', async ({ key }) => {
 
     // ignore backspace / enter keypress
