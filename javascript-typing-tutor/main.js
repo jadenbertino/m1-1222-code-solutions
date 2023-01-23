@@ -20,6 +20,9 @@
   ✅ enter -> starts typing test
   Be creative!
   see monkeytype for more inspo
+  clean up code 
+    for each
+    create fade out function
 */
 
 /*
@@ -72,9 +75,7 @@ function delay(time) {
 async function newGame() {
 
   // Game Setup
-  [$startScreen, $newGameBtn, $scoreboardBtn, $gameOverDisplay, $scoreboard].forEach(e => {
-    console.log(`updated ${e}`)
-    e.classList.add('fade-out')})
+  [$startScreen, $newGameBtn, $scoreboardBtn, $gameOverDisplay, $scoreboard].forEach(e => e.classList.add('fade-out'))
   await delay(400); // wait for fade out animation to complete 
   [$startScreen, $newGameBtn, $scoreboardBtn, $gameOverDisplay, $scoreboard].forEach(e => e.classList.add('hidden'));
   $scoreboardBtn.textContent = 'Show Scoreboard' // toggles between "show" and "hide" text
@@ -175,24 +176,53 @@ Scoreboard
 */
 const scores = []
 
-function displayScoreboard() {
-  $scoreboard.classList.toggle('hidden')
-  $gameOverDisplay.classList.add('hidden')
-  const scoreboardVisible = !$scoreboard.classList.contains('hidden')
-  if (scoreboardVisible) {
-    const scoreboardEntriesHtml = scores.map(({date, accuracy, wpm}) => (
+async function fadeOut(elems, time) {
+  elems.classList.remove('fade-out')
+  await delay(time)
+  elem.classList.remove('hidden')
+}
+
+async function fadeIn(elem, time) {
+  elem.classList.add('fade-out')
+  await delay(time)
+  elem.classList.add('hidden')
+}
+
+async function displayScoreboard() {
+  const showScoreboard = $scoreboard.classList.contains('hidden')
+
+  if (showScoreboard) {
+    // fade out game over OR startscreen
+    $gameOverDisplay.classList.add('fade-out')
+    $startScreen.classList.add('fade-out')
+    await delay(400)
+    $gameOverDisplay.classList.add('hidden')
+    $startScreen.classList.add('hidden')
+
+    // fade in scoreboard
+    $scoreboardEntries.innerHTML = scores.map(({date, accuracy, wpm}) => (
       `<div class='scoreboard-entry'>
       <span>${date.toLocaleString()}</span>
       <span>${accuracy}</span>
       <span>${wpm}</span>
       </div>`
     )).slice(0,10).join('') // only display 10 most recent scores
-    $startScreen.classList.add('hidden')
-    $scoreboardEntries.innerHTML = scoreboardEntriesHtml
     $scoreboardBtn.textContent = "Hide Scoreboard"
+    $scoreboard.classList.remove('hidden')
+    await delay(400)
+    $scoreboard.classList.remove('fade-out')
+
   } else {
+    // fade out scoreboard
+    $scoreboard.classList.add('fade-out')
+    await delay(400)
+    $scoreboard.classList.add('hidden')
+
+    // display start screen
     $scoreboardBtn.textContent = "Show Scoreboard"
-    $startScreen.classList.remove('hidden', 'fade-out')
+    $startScreen.classList.remove('hidden')
+    await delay(50)
+    $startScreen.classList.remove('fade-out')
   }
 }
 
