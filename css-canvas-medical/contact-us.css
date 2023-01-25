@@ -1,0 +1,40 @@
+#contact {
+  padding: 60px 0;
+}
+
+.row-contact-us {
+  display: flex;
+  align-items: start;
+}
+
+.col-one-half {
+  padding: 20px;
+}
+
+.row-contact-us > .col-left {
+  padding-top: 60px;
+}
+
+.phone-number {
+  margin: 12px 0;
+  font-size: 20px;
+}
+
+@media (max-width: 768px) {
+  .row-contact-us > .col-left {
+    padding: 0;
+  }
+
+  .container-contact-us {
+    max-width: 500px;
+  }
+
+  .row-contact-us {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .col-one-half {
+    width: 100%;
+  }
+}

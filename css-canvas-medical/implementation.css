@@ -1,0 +1,30 @@
+.header-bg {
+  background-image: url("./images/implementation/implementation-header.jpg");
+}
+
+.container-narrow {
+  max-width: 900px;
+}
+
+.section-implementation-wrapper {
+  margin-bottom: 40px;
+}
+
+.section-title {
+  font-size: 24px;
+  font-weight: normal;
+  margin-bottom: 8px;
+}
+
+.section-number {
+  font-weight: bold;
+  font-size: 32px;
+  font-family: "Tiempos Headline", serif;
+  letter-spacing: 0.1em;
+}
+
+.title {
+  padding: 48px 0;
+  font-size: 32px;
+  line-height: 1.5;
+}
